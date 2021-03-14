@@ -24,6 +24,10 @@ class MyDocument extends Document {
             }}
           />
           <link
+            href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css"
+            rel="stylesheet"
+          />
+          <link
             rel="preload"
             href="/fonts/inter-var-latin.woff2"
             as="font"

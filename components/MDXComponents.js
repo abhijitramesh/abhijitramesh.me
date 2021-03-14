@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import Latex from 'react-latex';
 import Tweet from 'react-tweet-embed';
-
 import ProsCard from '@/components/ProsCard';
 import ConsCard from '@/components/ConsCard';
 import Gumroad from '@/components/metrics/Gumroad';
@@ -27,6 +27,7 @@ const CustomLink = (props) => {
 
 const MDXComponents = {
   Image,
+  Latex,
   a: CustomLink,
   Analytics,
   ConsCard,
