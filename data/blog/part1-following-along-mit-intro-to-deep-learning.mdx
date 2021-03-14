@@ -71,7 +71,7 @@ Due to open source libraries such as Tensorflow and Pytorch deep learning has be
 />
 
 
-The perceptron is the building block of a neural network. It has inputs from x1 to xm which are multiplied to its corresponding weights w1 to wm which the results of which are summed together and passed through a non-linear activation function giving us the output y-hat.
+<Latex>The perceptron is the building block of a neural network. It has inputs from $x_1$ to $x_m$ which are multiplied to its corresponding weights $w_1$ to $w_m$ which the results of which are summed together and passed through a non-linear activation function giving us the output $\hat \bgroup y \egroup$.</Latex>
 <Image
   alt={`Image`}
   src={`/static/images/part1-following-along-mit-intro-to-deep-learning/Screenshot_2021-03-09_at_5.10.36_PM.png`}
@@ -91,11 +91,11 @@ The perceptron also has a bias term which is used to shift the activation functi
 
 This slides shows the rewrite of the formula in terms of Matrix multiplication and Linear Algebra.
 
-Where X is a vector which has all the input values from x1 to xm
-
-W is a vector which has all the weight values from w1 to wm
-
-w0 is the bias term
+<Latex>Where X is a vector which has all the input values from $x_1$ to $x_m$</Latex>
+<br/>
+<Latex>W is a vector which has all the weight values from $w_1$ to $w_m$</Latex>
+<br/>
+<Latex>$w_0$ is the bias term</Latex>
 
 g is the activation function.
 
@@ -178,9 +178,9 @@ Let's define a problem for our neural network to solve.
 
 We will be having two feature models
 
-x1 the number of lectures that we attended and
+<Latex>$x_1$ the number of lectures that we attended and </Latex>
 
-x2 hours spent on the final project
+<Latex>$x_2$ hours spent on the final project</Latex>
 
 For this case, our dataset would be the data of students who have attended the class in the past years.
 
@@ -195,7 +195,7 @@ This is what the feature space of the data looks like.
 
 If we put our data here let's say I attended 4 lectures and have spent 5 hours on the project. Looking at the visual we plotted our intuition tells us that we will pass the class.
 
-Let's pass this to a new perceptron with two inputs x1 and x2 and some hidden layers then finally leading upto our output.
+<Latex>Let's pass this to a new perceptron with two inputs $x_1$ and $x_2$ and some hidden layers then finally leading upto our output.</Latex>
 <Image
   alt={`Image`}
   src={`/static/images/part1-following-along-mit-intro-to-deep-learning/Screenshot_2021-03-10_at_12.16.34_PM.png`}
@@ -270,12 +270,12 @@ If we have only 2 weights we can plot the loss as a landscape as shown below.
 
 
 The goal is to find the lowest point in this loss landscape that define our w0 and w1 to do that we have to follow these steps.
-
-1. Pick a Random point (w0,w1)
-2. Computer the gradient of that point with respect to weight
-3. The gradient tells us the direction to go up the loss but we need to do the opposite so we travel in the opposite direction in small steps.
-4. We find the gradient there and repeat the process until we converge.
-
+<ol>
+  <li><Latex> Pick a Random point ($w_0$,$w_1$)</Latex></li>
+  <li> Computer the gradient of that point with respect to weight</li>
+<li> The gradient tells us the direction to go up the loss but we need to do the opposite so we travel in the opposite direction in small steps.</li>
+  <li>We find the gradient there and repeat the process until we converge.</li>
+</ol>
 This may not be the global minima but at-lease we will reach a local minimum. This algorithm is called gradient descent.
 
 In tensor-flow this would be,
