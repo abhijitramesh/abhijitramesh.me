@@ -28,13 +28,18 @@ export default function Home() {
         </h3>
         <BlogPost
           title="Part 1 : Learning Hands-on Machine Learning with Scikit-learn Keras and Tensorflow"
-          summary="Notes on The Machine Leaning Landscape"
+          summary="Notes on The Machine Learning Landscape"
           slug="part1-learning-hands-on-machine-leanring-with-scikit-learn-keras-and-tensorflow"
         />
         <BlogPost
-          title="How to Mine Crypto"
-          summary="Exploring Ethereum and learning how to mine cryptocurrency"
-          slug="how-to-mine-crypto"
+          title="Part 1 : Following along MIT intro to deep learning"
+          summary="An Intro to Deep Learning"
+          slug="part1-following-along-mit-intro-to-deep-learning"
+        />
+        <BlogPost
+          title="Part 2 : Learning Hands-on Machine Learning with Scikit-learn Keras and Tensorflow"
+          summary="Notes on End to End Machine Learning"
+          slug="part2-learning-hands-on-machine-leanring-with-scikit-learn-keras-and-tensorflow"
         />
         <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-8 text-black dark:text-white">
           Projects
