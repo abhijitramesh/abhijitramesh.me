@@ -108,7 +108,7 @@ finally, we can see the new word by just checking what value is held in the pred
   priority
 />
 
-<Latex>Let's see how this happens mathematically, we have the input $x_t$ the hidden state $h_t$ and finally our output $\hat \bgroup y \egroup $ . We have weights for each of these components $W_\bgrouph h \egroup $ the weights for the hidden layer, $W_\bgroup xh \egroup $ the weights for the input and finally $W_\bgroup hy \egroup $ the weights for the output.</Latex>
+<Latex>Let's see how this happens mathematically, we have the input $x_t$ the hidden state $h_t$ and finally our output $\hat \bgroup y \egroup $ . We have weights for each of these components $W_\bgroup h \egroup $ the weights for the hidden layer, $W_\bgroup xh \egroup $ the weights for the input and finally $W_\bgroup hy \egroup $ the weights for the output.</Latex>
 
 The update on the hidden state is done by multiplying the weight of the input state to the hidden state of that time-step and multiplying the weight of the input with the input. This is then passed through a non-linear activation function in our case a hyperbolic tangent.
 
@@ -383,8 +383,17 @@ Attention introduces an intermediate layer which can give the future time step n
 
 Attention is used in many celebrated applications of deep learning like self-driving cars and environment modeling.
 
+---
+
 ## Sources
 
 MIT intro deep learning : [http://introtodeeplearning.com/](http://introtodeeplearning.com/)
 
 Slides on intro to deep learning by MIT : [http://introtodeeplearning.com/slides/6S191_MIT_DeepLearning_L2.pdf](http://introtodeeplearning.com/slides/6S191_MIT_DeepLearning_L2.pdf)
+
+---
+
+## Lab Solutions
+[https://github.com/abhijitramesh/learning-introtodeeplearning/blob/main/Part2_Music_Generation.ipynb](https://github.com/abhijitramesh/learning-introtodeeplearning/blob/main/Part2_Music_Generation.ipynb)
+
+---
