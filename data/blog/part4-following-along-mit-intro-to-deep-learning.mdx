@@ -1,0 +1,263 @@
+---
+title: 'Part 4 : Following along MIT intro to deep learning'
+publishedAt: '2021-03-22'
+summary: 'Deep Generative Modeling'
+image: '/static/images/part1-following-along-mit-intro-to-deep-learning/banner.png'
+---
+
+## Deep Generative Modeling
+
+## Introduction
+
+Until now we have explored various methods in deep learning which we can use to do a task such as classification and regression where we have some data and do some prediction over that data. The scope of deep learning does not stop here it is beyond this as well we can generate synthetic data and like faces or images.
+
+### Supervised vs unsupervised learning
+
+![https://user-images.githubusercontent.com/43090559/111434409-86cc2e80-8725-11eb-92aa-3dda15471f03.png](https://user-images.githubusercontent.com/43090559/111434409-86cc2e80-8725-11eb-92aa-3dda15471f03.png)
+
+So far we have seen supervised learning where we have data and a label and our job is to create a function that maps these data to these labels.
+
+Now we will take a look at a different approach we have some data and we need to find some patterns inside this data without being given any labels this is unsupervised learning and generating synthetic data falls under this category.
+
+## Generative modeling
+
+The goal of generative modelling is to take as input some distribution and learn a model that represents that distribution.
+
+We can do this in two ways,
+
+#### Density Estimation
+
+We are given a sample of data and we have to learn the probability distribution in that sample of data.
+
+#### Sample Generation
+
+Here we are not only given a input sample and we learn the probability distribution form this sample but we also use these samples to create a new data
+
+<Latex>The training data $\sim P_\bgroup data \egroup (x)$</Latex><br/>
+
+<Latex>The Generated $\sim P_\bgroup model \egroup(x)$</Latex><br/>
+
+<Latex>The challenge is how can we learn $\sim P_\bgroup model \egroup(x)$ when we are given $\sim P_\bgroup data \egroup (x)$</Latex><br/>
+
+## Why generative models? Debiasing
+
+![https://user-images.githubusercontent.com/43090559/111451200-2f36be80-8737-11eb-9f62-e42c5ea56d96.png](https://user-images.githubusercontent.com/43090559/111451200-2f36be80-8737-11eb-9f62-e42c5ea56d96.png)
+
+One of the problem that generative models can solve is to de-bias a dataset, most of the dataset that is available these days from which we are able to train another model from are generally biased what this means is that they may be having homogenous skin colour; homogenous pose etc.. This is a very big issue as in real life the data is not biased so we need some form of mechanism to solve this bias one would be to train a GAN that is able to de-bias these dataset to ensure that they are fair and representative to the real world.
+
+Another use of generative models would be during outlier detection, during the training phase of a model that is used in self-driving cars. Here there may be outliers like let's say a plane flying across in the sky which is captured by the camera or harsh weather or even pedestrians these outliners can be detected with the help of a generative model from the distribution and using these outliners we can train the model to improve even more.
+
+## Latent variable models
+
+We would be seeing mostly two latent variable models
+
+1. Auto-encoders and variational Auto-encoders (VAEs)
+2. Generative Adversarial Networks (GANs)
+
+## What is a latent varibale
+
+By definition, latent variable means variables that not directly observed but are rather inferred from other variables that are observed. This can be described by a very good story from the *Myth of the Cave.*
+
+![https://user-images.githubusercontent.com/43090559/111507110-52319480-8770-11eb-9130-b922b8bc0251.png](https://user-images.githubusercontent.com/43090559/111507110-52319480-8770-11eb-9130-b922b8bc0251.png)
+
+Here there are some prisoners who are facing the opposite side of the wall and they are observing shadows casted by objects that are behind the wall. The prisoners can understand what the objects are by looking what they can infer from the shadow but they are not able to know the actual features as they are not looking at the objects directly. The objects are latent variables and the shadow is another variable that is observed from which they can infer information about the latent varibales.
+
+Our task is to train neural networks that can observer latent variables given an observed data. (Think of this from the perspective of what un-supervised learning means)
+
+## Autoencoders
+
+In order to learn the underlying pattern in the data, we can pass the data down a neural network like a CNN which is doing dimensionality reduction.
+
+![https://user-images.githubusercontent.com/43090559/111671370-e4a06980-883e-11eb-8ca3-f1f4c11b41bd.png](https://user-images.githubusercontent.com/43090559/111671370-e4a06980-883e-11eb-8ca3-f1f4c11b41bd.png)
+
+Here we can see that we are giving the input image 2 into the layer x and then it is being passed down through a convolutional neural network (of the encoder) and then finally it is given as output in the layer z where we can get the feature-rich compressed representation of this data.
+
+Since we are doing an unsupervised approach where there is no concept of any labels so how can we know if the network is giving the right output at z, simple we do the opposite of the encoder network we create a decoder that takes in the latent vector and the increase its dimensionality to reconstruct out the image.
+
+![https://user-images.githubusercontent.com/43090559/111672147-abb4c480-883f-11eb-92ae-6860c706f1b1.png](https://user-images.githubusercontent.com/43090559/111672147-abb4c480-883f-11eb-92ae-6860c706f1b1.png)
+
+<Latex>We determine the loss by measuring the distance between the image that is given to the network $x$ and the output of the image that is $\hat\bgroup x \egroup$ since the image is the reconstruction of the original image. Here the latent variable $z$ is a compressed representation of the image.</Latex>
+
+![https://user-images.githubusercontent.com/43090559/111672697-3bf30980-8840-11eb-9e4f-0469b6879115.png](https://user-images.githubusercontent.com/43090559/111672697-3bf30980-8840-11eb-9e4f-0469b6879115.png)
+
+If we add very fewer layers to out network in the encoder or decoder side we will lose the reconstruction quality of the image because the more hidden layers we have the more minute patterns can be observed by the model and this would create a representative latent vector from which we can reconstruct the image.
+
+## Variational Auto-encoders (VAE's)
+
+When we take a close look at the normal autoencoder we saw before we realise that this is a deterministic model as long as we pass in the same input we get the output as a reconstruction of the image
+
+![https://user-images.githubusercontent.com/43090559/111731002-915b0500-8898-11eb-8796-d8bf49c70e47.png](https://user-images.githubusercontent.com/43090559/111731002-915b0500-8898-11eb-8796-d8bf49c70e47.png)
+
+Variational autoencoders are a probabilistic twist on auto-encoders they introduce a twist to the network by creating a sample from the mean and standard deviation to the computer the latent samples. They introduce stochasticity to the sampling process that is instead of learning what the latent variable is they have two more vectors that learn the mean and standard deviation such that instead of learning what the vector directly is it learns the probability distribution that is underlying in the network and try to produce another probability distribution that is similar to the learned distribution.
+
+### VAE optimization
+
+The optimisation process in VAE is done in two steps
+<ol>
+<li><Latex>The encoder computes $q_\bgroup \phi \egroup(z|x)$ where the input given to the network is x and it is trying to predict the probability distribution z for the weights given by $\phi$</Latex></li>
+<li><Latex>The decoder computers $p_\bgroup \theta \egroup(x|z)$ where the input given to the network is z and it is trying to predict the probability distribution x for the weights given by $\theta$</Latex></li>
+</ol>
+The loss is computed by summing together two factors.
+
+![https://user-images.githubusercontent.com/43090559/111731324-3a096480-8899-11eb-91fe-48b7a57dd6df.png](https://user-images.githubusercontent.com/43090559/111731324-3a096480-8899-11eb-91fe-48b7a57dd6df.png)
+
+<Latex>The reconstruction loss is similar to what we have seen in autoencoders it is the log-likelihood loss between $||x- \hat\bgroup x \egroup||^2$</Latex><br/>
+
+<Latex>The probability distribution $q_\bgroup \phi \egroup(z|x)$ is a newly computed distribution z given the data x. What this enforces is that we are placing a prior on the latent space z this is to make sure that the distribution would be made to look like what we want it to be like.</Latex>
+
+![https://user-images.githubusercontent.com/43090559/111731806-3c1ff300-889a-11eb-8f0d-ae81c0c25547.png](https://user-images.githubusercontent.com/43090559/111731806-3c1ff300-889a-11eb-8f0d-ae81c0c25547.png)
+
+<Latex>The model will enforce the distribution it learns to follow the prior we are applying to it, this prior is denoted by $p(z)$</Latex>
+
+What the function D does here is a minimisation of the probability distribution we are learning and the prior that we are placing on the network. This would prevent the model from overfitting to the distribution of the latent space and would adapt to once that is similar to the prior.
+
+![https://user-images.githubusercontent.com/43090559/111737640-fbc67200-88a5-11eb-92c1-39a5315d7903.png](https://user-images.githubusercontent.com/43090559/111737640-fbc67200-88a5-11eb-92c1-39a5315d7903.png)
+
+Generally the prior used as a regularisation for our network is a normal distribution this ensures that the network encourages the distribution to be around the center of the latent space. This also ensures that the network is penalised if it tries to cluster the points in specific regions by memorising the data and intern overfitting the model.
+
+![https://user-images.githubusercontent.com/43090559/111738190-e867d680-88a6-11eb-97bb-ec94d09062bc.png](https://user-images.githubusercontent.com/43090559/111738190-e867d680-88a6-11eb-97bb-ec94d09062bc.png)
+
+So now the question is why do we need to do this regularisation in addition to finding the probability distribution, remember we are not computing the probability distribution directly we are learning it and what this means is that there might be chances that it might learn the wrong way and this is why we implement the regularisation specifically in our case right now the normal distribution.
+
+If the distributions not regularised the points that are close in the latent space may not be having similar decoding we ideally want similar things to be groups together and that is the case here as well we need the points to be grouped in such a way that adjacent things are representing similar objects when decoded. This is where regularisation comes to play if we are using the prior to be a normal distribution this would make the results follow the latent space to follow the same pattern as well.
+
+![https://user-images.githubusercontent.com/43090559/111750191-ea3a9580-88b8-11eb-919d-d38d1a462ed5.png](https://user-images.githubusercontent.com/43090559/111750191-ea3a9580-88b8-11eb-919d-d38d1a462ed5.png)
+
+As we know in a neural network the data is propagated as gradients and using a regularisation on the gradients help it to cluster similar information together.
+
+The problem with this approach is that we cannot backpropagate through a sampling layer and we need deterministic layers to undergo backpropagation.
+
+### Reparametrizing the sampling layer
+
+So now what we have to do in order to do back-propogation is to reparametrize the sampling layer to be deterministic this can be done by
+
+- a fixed <Latex>$\mu$</Latex> vector<br/>
+- a fixed <Latex>$\sigma$</Latex> vector but this vector is scaled by a random constant <Latex>$\epsilon$</Latex> drawn from a prior distribution (gaussian normal)
+
+![https://user-images.githubusercontent.com/43090559/111754095-9aaa9880-88bd-11eb-81d3-9f982bd3ef99.png](https://user-images.githubusercontent.com/43090559/111754095-9aaa9880-88bd-11eb-81d3-9f982bd3ef99.png)
+
+We can see here a comparison between the normal form and the new reparametrized form in which we can make the z node deterministic and we have modified the function to sample from the weights <Latex>$\phi$</Latex> the input <Latex>$x$</Latex> and the distribution function <Latex>$\epsilon$</Latex>. Here we are able to do the backpropagation down the nodes easily since they are deterministic layers.
+
+### Latent perturbation
+
+The good thing about this is that we can fine tune a particular variable in our latent vector to and pass it through the decoder to generate different outputs this means we can understand particular changes like change in head-pose.
+
+![https://user-images.githubusercontent.com/43090559/111757858-ca5b9f80-88c1-11eb-9ee8-2e72201e36c8.png](https://user-images.githubusercontent.com/43090559/111757858-ca5b9f80-88c1-11eb-9ee8-2e72201e36c8.png)
+
+But the issue is that ideally we need these variables to be untangled that is each variable should represent only one feature if we change that variable it should reflect change on that feature here we can see a plot of Head pose v/s Smile this should not happen ideally.
+
+![https://user-images.githubusercontent.com/43090559/111759099-41ddfe80-88c3-11eb-91fd-2a3e6f13e456.png](https://user-images.githubusercontent.com/43090559/111759099-41ddfe80-88c3-11eb-91fd-2a3e6f13e456.png)
+
+A technique that is known to work is that in have a value beta that controls the regularisation term. This acts like a bottleneck to the regularisation term and hence disentanglement of the latent variables.
+
+## Why latent variable models ? Debiasing
+
+![https://user-images.githubusercontent.com/43090559/111866890-9dc58780-8996-11eb-8531-1ec702d33582.png](https://user-images.githubusercontent.com/43090559/111866890-9dc58780-8996-11eb-8531-1ec702d33582.png)
+
+The datasets that are currently used mostly have some features that are either overrepresented or underrepresented like homogenous skin colour, pose etc... VAE's can actually be trained in such a way that it learns automatically which of these features are Biased and automatically de-bias them the cool thing about this is that we don't need to specify which of these latent variables are biasing but the network would automatically learn these biased features and de-bias them. The use of this is that we are able to create datasets that are representative of the real-world data and this intern would help us train models that can be deployed in the real world.
+
+## Generative Adversarial Network (GANs)
+
+What if we don't need the model density but just generate new samples only, the idea here is to sample from nothing that is noise and learn a transformation to the data distribution.
+
+![https://user-images.githubusercontent.com/43090559/111874179-0114e100-89ba-11eb-821f-03271f31a9f7.png](https://user-images.githubusercontent.com/43090559/111874179-0114e100-89ba-11eb-821f-03271f31a9f7.png)
+
+GAN is an efficient way to train such a network the idea is to have two neural networks to complete against each other the first network takes in a noise and try to generate a fake image the second network takes in the fake image and the real image and try to identify if the fake image is real or fake the generator tries to fool the discriminator and the discriminator try to outsmart the generator and thereby both the network learn to improve each other.
+
+![https://user-images.githubusercontent.com/43090559/111874800-c3658780-89bc-11eb-96e1-75eb1240aad9.png](https://user-images.githubusercontent.com/43090559/111874800-c3658780-89bc-11eb-96e1-75eb1240aad9.png)
+
+## Training GANs
+
+As we have said earlier the goal of the generator is to generate fake data that looks real and food the discriminator and the job of the discriminator is to discriminate of a data is real of fake.
+
+So what is the global optimum for the data distribution we have created.
+
+Lets first look at the loss for the Discriminator
+
+![https://user-images.githubusercontent.com/43090559/111875984-961bd800-89c2-11eb-86b8-6d99c80d3354.png](https://user-images.githubusercontent.com/43090559/111875984-961bd800-89c2-11eb-86b8-6d99c80d3354.png)
+
+This is similar to the corss entropy loss,
+
+We have to maximise the probability that the fake data is identified as fake
+
+The <Latex>$D(G(z))$</Latex> is the discriminators estimate the take fake data is actually fake
+
+<Latex>$D(x)$</Latex> is the discriminators estimate that a real data is fake subtracting it with 1 will give if real data is real.
+
+We are doing a arg max to estimate the maximum estimate of real is real and fake is fake.
+
+On the generator side this should have the adversarial effect,
+
+![https://user-images.githubusercontent.com/43090559/111876360-5950e080-89c4-11eb-9469-cf42a2b318ae.png](https://user-images.githubusercontent.com/43090559/111876360-5950e080-89c4-11eb-9469-cf42a2b318ae.png)
+
+So the loss function here is to minimise the same loss term for the disciminator.
+
+![https://user-images.githubusercontent.com/43090559/111876436-bcdb0e00-89c4-11eb-9149-19075c1eea35.png](https://user-images.githubusercontent.com/43090559/111876436-bcdb0e00-89c4-11eb-9149-19075c1eea35.png)
+
+Here we can see that the network as a whole is put together in a min max kind of fashion to train the whole network.
+
+After the network is fully trained we can just take out the generator and use this to synthesise new data from the learned target data distribution.
+
+We can take any point from the gaussian noise and pass it to the generator to form a synthetic image from the distribution.
+
+We can actually traverse through the gaussian noise to see the interpolation of the images generated by the network.
+
+![https://user-images.githubusercontent.com/43090559/111876757-3293a980-89c6-11eb-86be-57b9e3a1798e.png](https://user-images.githubusercontent.com/43090559/111876757-3293a980-89c6-11eb-86be-57b9e3a1798e.png)
+
+## GANs Recent Advances
+
+### Progressive growing of GANs
+
+These are GANs that have layers that are added to them progressively during training so that they generate better resolution images after some time steps, these GANs result in very good quality images.
+
+![https://user-images.githubusercontent.com/43090559/111919976-7a8ffa80-8ab2-11eb-902b-f3ec8b457ffb.png](https://user-images.githubusercontent.com/43090559/111919976-7a8ffa80-8ab2-11eb-902b-f3ec8b457ffb.png)
+
+### StyleGAN
+
+This is a cross-over for the implementation of style transfer and GANs where we can generate new images by transferring the style from Images.
+
+We can do this by taking two sources of images and using the GAN to generate a new Image with features of the two images.
+
+![https://user-images.githubusercontent.com/43090559/111920575-c001f700-8ab5-11eb-9f00-aec0d8976647.png](https://user-images.githubusercontent.com/43090559/111920575-c001f700-8ab5-11eb-9f00-aec0d8976647.png)
+
+### Conditional GANs
+
+As we have seen until now the images generated by the GANs are random but this can be changed by using a conditional GAN we can choose which class of output do we need the network to generate an image for a class of our choice by introducing a condition term.
+
+![https://user-images.githubusercontent.com/43090559/111920932-d1e49980-8ab7-11eb-8fe8-2e24cca6444d.png](https://user-images.githubusercontent.com/43090559/111920932-d1e49980-8ab7-11eb-8fe8-2e24cca6444d.png)
+
+### Conditional GANs and pix2pix : Paired translation
+
+![https://user-images.githubusercontent.com/43090559/111921025-60591b00-8ab8-11eb-941c-12217cfbae83.png](https://user-images.githubusercontent.com/43090559/111921025-60591b00-8ab8-11eb-941c-12217cfbae83.png)
+
+These translations can be applied in lot of fields such as Map to arial view or vice versa we can also use this for colouring from edges.
+
+## CycleGAN
+
+Apart from paired translation we can also do unpaired data translation across domains.
+
+![https://user-images.githubusercontent.com/43090559/111921321-f5104880-8ab9-11eb-8fcf-545fac127bad.png](https://user-images.githubusercontent.com/43090559/111921321-f5104880-8ab9-11eb-8fcf-545fac127bad.png)
+
+In these cases, there are two discriminators and two generators here the house skin colour to another colour. It has also done some changes in the background to make the video look more realistic.
+<iframe
+    width="100%"
+    height="315"
+    src="https://www.youtube.com/embed/9reHvktowLY"
+    frameBorder="0"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+/>
+
+### Distribution transformations
+
+In general GANS we transform a Gaussian noise to a target data manifold in a cycle GAN we can transform one data manifold X to another data manifold Y.
+
+---
+
+## Sources
+
+MIT intro deep learning : [http://introtodeeplearning.com/](http://introtodeeplearning.com/)
+
+Slides on intro to deep learning by MIT : [http://introtodeeplearning.com/slides/6S191_MIT_DeepLearning_L4.pdf](http://introtodeeplearning.com/slides/6S191_MIT_DeepLearning_L4.pdf)
+
+---
