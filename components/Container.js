@@ -16,7 +16,7 @@ export default function Container(props) {
   const { children, ...customMeta } = props;
   const router = useRouter();
   const meta = {
-    title: 'Abhijit Ramesh – Developer, Student, Bodybuilder',
+    title: 'Abhijit Ramesh',
     description: `Machine Learning Engineer, Android Developer, and Startup Enthusiast`,
     image: 'https://abhijitramesh.me/static/images/banner.jpg',
     type: 'website',
