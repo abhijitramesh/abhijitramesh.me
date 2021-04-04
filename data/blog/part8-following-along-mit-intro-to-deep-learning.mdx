@@ -1,0 +1,251 @@
+---
+title: 'Part 8 : Following along MIT intro to deep learning'
+publishedAt: '2021-04-04'
+summary: 'Bias and Fairness'
+image: '/static/images/part1-following-along-mit-intro-to-deep-learning/banner.png'
+---
+## Bias and Fairness
+
+## Introduction
+
+AI applications that uses Neural Networks under the hood is widely adapted currently in the real world and advancement in this field is increasing day by day. One of the major problem that AI is facing is that of algorithmic bias. As we have seen already we understand that our algorithms are only as good as our data and if our data is biased our algorithm is also biased. This effects in a lot of places everything from facial recognition to making decision in medical processes. The need to compact these biases are hence necessary.
+
+## What is bias ?
+
+Let us look at the image of a watermelon and think of some description for the same.
+
+![https://user-images.githubusercontent.com/43090559/113404647-1fb9a580-93c6-11eb-863a-d8968c9f229f.png](https://user-images.githubusercontent.com/43090559/113404647-1fb9a580-93c6-11eb-863a-d8968c9f229f.png)
+
+It is more likely that we describe these as simply "watermelon" instead of something like "red watermelon" but what if we are shown this image instead ?
+
+![https://user-images.githubusercontent.com/43090559/113404836-70c99980-93c6-11eb-941b-6dd7148f24ec.png](https://user-images.githubusercontent.com/43090559/113404836-70c99980-93c6-11eb-941b-6dd7148f24ec.png)
+
+Then it is more likely that we go for answers such as yellow watermelon. Why does this happen even though both are simply watermelon ?
+
+We don't think about watermelon with Red flesh as red watermelon because this is prototypical to us. As human beings it is our nature to reduce complex sensory inputs into simple groups so that they are more easy to understand and communicate.
+
+But to a person who is living in a place where the yellow watermelons are more common, they might be inclined to classify the yellow once as simply watermelons. The rest of us will consider these once as atypical.
+
+These kids of biases and stereotypes also arise in data labelling which will make its way into the data and hence the model itself weather it is done by humans or artifically.
+
+## Bias in Machine Learning
+
+![https://user-images.githubusercontent.com/43090559/113405705-dd916380-93c7-11eb-9e28-b6d811de3081.png](https://user-images.githubusercontent.com/43090559/113405705-dd916380-93c7-11eb-9e28-b6d811de3081.png)
+
+A study was conducted on facial recognition systems that were in production by top companies with images of faces from around the world and it showed that the algorithm was miss classifying images of darker females compared to the other classes. Another study also on facial recognition shows that many algorithms have more error in classifying faces of colours as in comparison to white faces.
+
+Similarly when the image of a bride was passed into the model which is a typical bride from North America or Europe the following was the prediction.
+
+![https://user-images.githubusercontent.com/43090559/113405966-4aa4f900-93c8-11eb-818b-1de2dda543d4.png](https://user-images.githubusercontent.com/43090559/113405966-4aa4f900-93c8-11eb-818b-1de2dda543d4.png)
+
+But when we pass in an image of a bride from East Asia the predictions were,
+
+![https://user-images.githubusercontent.com/43090559/113406100-8a6be080-93c8-11eb-9645-1f8f711ee14d.png](https://user-images.githubusercontent.com/43090559/113406100-8a6be080-93c8-11eb-9645-1f8f711ee14d.png)
+
+This is not saying that the image is of a bride even though the same is seen above.
+
+The same was the case when images of spices from US was compared to spices from philipeans which also showed similar result.
+
+The accuracy of the images were correlated with the income of the homes from which the test image was generated.
+
+![https://user-images.githubusercontent.com/43090559/113441731-6fbb5b00-940c-11eb-83ca-7b36c3246b8c.png](https://user-images.githubusercontent.com/43090559/113441731-6fbb5b00-940c-11eb-83ca-7b36c3246b8c.png)
+
+This is because the test images that were taken were taken from houses with a greater income but machine learning models should be representative looking at the regions of the world in the right side of the image we can see that these images were taken from not the countries with the most population of people and hence the data is biased so the models also will be biased. Most of the models that are deployed in real life are similar to this even though it has claimed that deep learning has solved such problems as the vision it may not be always true because of these biases.
+
+## Bias at All Stages of the AI Life Cycle
+
+1. Data imbalances with respect to class labels, features, input structre
+2. Model lack of unified uncertainty, interpretability and performance metrics
+3. Training and deployment feedback loops that perpetuate biases
+4. Evaluation done in bulk, lack of systematic analysis with respect to data subgroups
+5. Interpretation human error and biases distrot meaning of results
+
+## Understanding and Mitigating Algorithmic Bias
+
+![https://user-images.githubusercontent.com/43090559/113455977-a18eea80-9429-11eb-992a-bd361b4ea21c.png](https://user-images.githubusercontent.com/43090559/113455977-a18eea80-9429-11eb-992a-bd361b4ea21c.png)
+
+## Taxonomy of Common Baises
+
+There are mainly two categories of biases in Deep Learning they are
+
+### 1.Data-Drive
+
+These are bias in deep learning that occurs due to the data that is used to train the model
+
+#### 1. Selection Bias
+
+Data selection does not reflect randomiation
+
+#### 2. Reporting Bias
+
+What is shared does not reflect real likelihood
+
+#### 3. Sampling Bias
+
+Particular data instance are more frequently sampled
+
+### 2. Interpretation-Driven
+
+These are bias in deep learning that occurs due to how we human beings interpret the data.
+
+#### 1. Correlation Fallacy
+
+This is miss-interpreting correlation for causation.
+
+#### 2. Overgeneralization
+
+"General" conclusions drawn from limited test data
+
+#### 3. Automation Bias
+
+AI-generated decisions are favoured over human-generation decisions.
+
+Even though we can categorise biases as such truly they are all correlated and understanding them one by one would help us understand the correlation and also solving some of them could actually help in solving the other.
+
+## Interpretation Driven Biases
+
+### Bias from the Correlation Fallacy
+
+Let us say we are trying to build a model that predicts the number of given Phd's given in any given year, and we find a variable (red) that is very correlative to this and we start building the model but just because the data is correlated does this means that the model is learning the ground truth. The data represented in red is actually the total revenue generated by arcades in every year this is correlated but this does not mean that we can make a model out of this because we neural network that we are building is not looking for pattern of Phd graduates it is looking for something else, the ground truth is miss-represented.
+
+![https://user-images.githubusercontent.com/43090559/113468489-20a11480-9464-11eb-8483-f5fe951bfaa3.png](https://user-images.githubusercontent.com/43090559/113468489-20a11480-9464-11eb-8483-f5fe951bfaa3.png)
+
+### Bias from Assuming Overgeneralization
+
+![https://user-images.githubusercontent.com/43090559/113468614-cc4a6480-9464-11eb-8ce0-bc7f81a6e132.png](https://user-images.githubusercontent.com/43090559/113468614-cc4a6480-9464-11eb-8ce0-bc7f81a6e132.png)
+
+Bias might also happen due to overgeneralisation in the dataset, the cups i the left are too generalised because of the same angles this causes a distribution shift because in real life there cups can be from any angles like what is shown in the right.
+
+One approach to solving dataset with distribution shift that was done was to construct the test dataset accounting for already identified distribution shifts.
+
+![https://user-images.githubusercontent.com/43090559/113468746-b8ebc900-9465-11eb-9bda-89d09980c5c6.png](https://user-images.githubusercontent.com/43090559/113468746-b8ebc900-9465-11eb-9bda-89d09980c5c6.png)
+
+In the case above the distribution shift happens with regard to the location and time.
+
+But in case of something like medical data this means sourcing data from different hospitals for test and validation set.
+
+![https://user-images.githubusercontent.com/43090559/113468796-036d4580-9466-11eb-8e5e-f03cd86ffeae.png](https://user-images.githubusercontent.com/43090559/113468796-036d4580-9466-11eb-8e5e-f03cd86ffeae.png)
+
+## Biases due to Class Imbalance
+
+![https://user-images.githubusercontent.com/43090559/113469720-8940bf00-946d-11eb-8e0e-218e71454a13.png](https://user-images.githubusercontent.com/43090559/113469720-8940bf00-946d-11eb-8e0e-218e71454a13.png)
+
+Given the following scenario what would be out Model Accuracy ? would it represent the class with frequency in reality or the frequency in the data. Obviously as we know the data would not be representative of the data in the real world because the model is trained based on the data in the dataset and this would be reflected in the model as well but the problem is since this is not representative of the real world our model is going to be biased.
+
+The way to solve this is by actually balancing out all the classes to be equal this should make our model accurate.
+
+![https://user-images.githubusercontent.com/43090559/113469779-ffddbc80-946d-11eb-9bc2-7153f63b29db.png](https://user-images.githubusercontent.com/43090559/113469779-ffddbc80-946d-11eb-9bc2-7153f63b29db.png)
+
+How does this cause this imbalance the learning process ?
+
+Well let us consider that we have a classifier with orange and blue representing the data-points and we are training this the update steps work in such a way that this would move the function a small step closer to the new point every time but the catch is here our data is imbalanced in such a way that orange: blue is in the ration 1:20 what this means is that for every orange point there would be 20 blue points which would result in the learning also being imbalanced since there is not much step taken by the classifier towards the orange points due to the only incremental updates in each step.
+
+![https://user-images.githubusercontent.com/43090559/113469861-9dd18700-946e-11eb-9f2f-5071675e94b5.png](https://user-images.githubusercontent.com/43090559/113469861-9dd18700-946e-11eb-9f2f-5071675e94b5.png)
+
+The effects of this can also be observed in real world, how does the data get miss-represented ?
+
+![https://user-images.githubusercontent.com/43090559/113469887-c8bbdb00-946e-11eb-9368-0d4691ba2488.png](https://user-images.githubusercontent.com/43090559/113469887-c8bbdb00-946e-11eb-9368-0d4691ba2488.png)
+
+Let us consider medicine when we consider MRI scans of the brain here the ratio of people having cancer to the total population is very less this ratio will reflect in the dataset as well so this means that we need to alter the dataset in such a way that we can have equal number of images for both cases.
+
+If the data is balanced the learning process will also be balanced.
+
+Some techniques to balance data is by assigning weights to each of the classes according to there frequency so that the resulting contribution is balanced.
+
+![https://user-images.githubusercontent.com/43090559/113472266-ac746a00-947f-11eb-8855-c032550c5f09.png](https://user-images.githubusercontent.com/43090559/113472266-ac746a00-947f-11eb-8855-c032550c5f09.png)
+
+We can visualise this in such a way that if there is a datapoint that has less number the dataset then it can occupy more size so that the frequency of them being taken is increased.
+
+![https://user-images.githubusercontent.com/43090559/113472307-02491200-9480-11eb-8ce0-4c12ca68f807.png](https://user-images.githubusercontent.com/43090559/113472307-02491200-9480-11eb-8ce0-4c12ca68f807.png)
+
+## Biases in Features
+
+Bias can even happen in the case of features even if we have a balanced class there could be potential bias in the data feature itself.
+
+Let us consider some scenario,
+
+![https://user-images.githubusercontent.com/43090559/113481414-12c8af00-94b7-11eb-99f0-e4e60705b265.png](https://user-images.githubusercontent.com/43090559/113481414-12c8af00-94b7-11eb-99f0-e4e60705b265.png)
+
+Here we can see that the real-world data has mostly people with black hair but the golden standard that is used in production shows blonde and brown hair over-representation. But in both cases the read hair is underrepresented but we want our model to recognise the same so a balanced dataset would have all 4 categories in the same amount.
+
+![https://user-images.githubusercontent.com/43090559/113481625-26c0e080-94b8-11eb-854c-6f68986822fa.png](https://user-images.githubusercontent.com/43090559/113481625-26c0e080-94b8-11eb-854c-6f68986822fa.png)
+
+Now the question is how can we uncover such biases in a learning pipeline itself and how can we mitigate such biases if they exist.
+
+## Learning Techniques to Imrove Fairness
+
+### Bias Mitigation
+
+In this technique we take the dataset of the model that is biased and remove the problematics signals from them and this would result in mitigated bias improving fairness.
+
+### Inclusion
+
+In this technique instead of removing data we add more signals to the desired features which would re-weight signal and improve fairness.
+
+## Bias and Fairness in Supervicsed Classification
+
+![https://user-images.githubusercontent.com/43090559/113498457-a9828380-952a-11eb-9519-5a650c94c2b7.png](https://user-images.githubusercontent.com/43090559/113498457-a9828380-952a-11eb-9519-5a650c94c2b7.png)
+
+Some of the ways we can evaluate these bias are by a disaggregating evaluation which makes us test the performance with respect to different subgroups in the dataset.
+
+Another method that is known to work is Intersectional evaluation which is evaluating performance with respect to subgroup intersections.
+
+## Adversarial Multi-Task Learning to Mitigate Bias
+
+This method was used in a language model to de-bias its effects.
+
+For this first we need to specify the attribute for which we are planning on mitigating the bias.
+
+This is represented as z.
+
+There are generally two discriminators in this case one to do the task and another to get our sensitive attribute z.
+
+The model is trained adversarially and a negative gradient is given back to mitigate the effect of z on the task decesion.
+
+![https://user-images.githubusercontent.com/43090559/113498542-7ab8dd00-952b-11eb-8b51-2f23cb4ad193.png](https://user-images.githubusercontent.com/43090559/113498542-7ab8dd00-952b-11eb-8b51-2f23cb4ad193.png)
+
+The performance of this model was checked in both biased and debiased cases and the result was fascinating.
+
+When the model was tasked to complete the analogies for what he is too she as a doctor is to for the biased model the model said nurse, nanny and so on whereas in the de-biased model it said paediatrician, dentist, surgeon etc. What this means is that the model is giving synonyms of the word doctors which shows the effect of debiasing.
+
+## Adaptive Resampling for Automated Debiasing
+
+We have also seen some methods to debias models by using automated methods to learn distributions that were being overrepresented and underrepresented and generate debiased images that can be used for training the model.
+
+### Mitigating Bias through learned latent structre
+
+How this works is by first learning the latent structure, from the learned latent structure we can understand the distribution and see what are the feature that are over represented and underrepresented.
+
+![https://user-images.githubusercontent.com/43090559/113498740-5d850e00-952d-11eb-8b3e-621e8c7c3d26.png](https://user-images.githubusercontent.com/43090559/113498740-5d850e00-952d-11eb-8b3e-621e8c7c3d26.png)
+
+From the probability distribution we can adaptively resample the data which would be a debiased dataset which can then be use to create models that can be used to new fair data distribution.
+
+The math behind this looks like this,
+
+![https://user-images.githubusercontent.com/43090559/113498915-ef414b00-952e-11eb-825e-69d367808906.png](https://user-images.githubusercontent.com/43090559/113498915-ef414b00-952e-11eb-825e-69d367808906.png)
+
+![https://user-images.githubusercontent.com/43090559/113498931-1566eb00-952f-11eb-818e-cec032f1e75f.png](https://user-images.githubusercontent.com/43090559/113498931-1566eb00-952f-11eb-818e-cec032f1e75f.png)
+
+Adaptive resampling has the advantage of not having to specify the features we are debiasing against this is especially useful because there might be features that are in the dataset which we are not about but would be doing some form of bias or if we humans are specifying what to debiase against there might still be chances that we are imposing our bias on the model.
+
+![https://user-images.githubusercontent.com/43090559/113499013-e69d4480-952f-11eb-8331-cf70eca3257b.png](https://user-images.githubusercontent.com/43090559/113499013-e69d4480-952f-11eb-8331-cf70eca3257b.png)
+
+The evaluation does by researchers at MIT shows that as the debiasing increased the accuracy of the models as the debiasing rate increase.
+
+Debiasing is very important in keeping the model representative of the data.
+
+## Summary
+
+![https://user-images.githubusercontent.com/43090559/113499497-05053f00-9534-11eb-8d9a-619e8de16733.png](https://user-images.githubusercontent.com/43090559/113499497-05053f00-9534-11eb-8d9a-619e8de16733.png)
+
+---
+
+## Sources
+
+MIT introtodeeplearning : [http://introtodeeplearning.com/](http://introtodeeplearning.com/)
+
+Slides on intro to deep learning by MIT :
+
+[http://introtodeeplearning.com/slides/6S191_MIT_DeepLearning_L8.pdf](http://introtodeeplearning.com/slides/6S191_MIT_DeepLearning_L8.pdf)
+
+---
