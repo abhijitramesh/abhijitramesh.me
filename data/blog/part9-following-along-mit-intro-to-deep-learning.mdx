@@ -1,0 +1,225 @@
+---
+title: 'Part 9 : Following along MIT intro to deep learning'
+publishedAt: '2021-04-06'
+summary: 'Deep CPCFG for Information Extraction'
+image: '/static/images/part1-following-along-mit-intro-to-deep-learning/banner.png'
+---
+## Deep CPCFG for Information Extraction
+
+## Introduction
+
+### Document Intelligence
+
+There are a lot of documents around the internet things as invoices, leasers, revenue contracts, proof of delivery and tax forms these documents might be semi-structured and unstructured document intelligence is extracting, analysing and interrogating information from these documents.
+
+### Transaction Intelligence
+
+There are billions of transactions that are happening around the world and all these transactions generate data. We can use these data to determine tax and accounting treatment and identify anomalies and potential fraud.
+
+### Trusted AI
+
+This is the field of AI that deals with Identifying, managing and mitigating the risks associated with AI by collaborating with government, NGOs and industry to enable responsible AI.
+
+## Information Extraction
+
+### Document Intelligence
+
+![https://user-images.githubusercontent.com/43090559/113607696-24e94f80-9667-11eb-8f68-2c7b340267cf.png](https://user-images.githubusercontent.com/43090559/113607696-24e94f80-9667-11eb-8f68-2c7b340267cf.png)
+
+Document extraction is simply extracting data from document such as these forms here the data is generally entered into the columns that are highlighted and we can make use of these information some of the challenges of these documents is that there might be places like the list that is shown in the document above which may have any number of items that we cannot predict and also there might be cases where there are no information that in the text.
+
+Some of the other challenges that are also there are supporting documents such as cheques.
+
+![https://user-images.githubusercontent.com/43090559/113608010-932e1200-9667-11eb-811a-8259df8fa83c.png](https://user-images.githubusercontent.com/43090559/113608010-932e1200-9667-11eb-811a-8259df8fa83c.png)
+
+Here we can see that there is a check along with the invoice as a supporting document and in the invoice also there are list items that may or may not have values in them and they are summed to a total and a check is paid for the corresponding amount.
+
+Some challenges with cheques are that they are generally handwritten and most of the time the data we see might be scanned which might lead to it being poor quality making it challenging to pull data from it.
+
+![https://user-images.githubusercontent.com/43090559/113608300-0172d480-9668-11eb-8c42-2b7d9b7fa6d5.png](https://user-images.githubusercontent.com/43090559/113608300-0172d480-9668-11eb-8c42-2b7d9b7fa6d5.png)
+
+The document on the left is a very common document that we can generally find, it is scanned and the sides are creased a bit also the information is offset by a little bit so and adding to the challenge. The document on the right also is a very common bill with list items and prices corresponding to it the image is a bit washed out.
+
+![https://user-images.githubusercontent.com/43090559/113608658-7ba35900-9668-11eb-8965-7773ab3a3bf6.png](https://user-images.githubusercontent.com/43090559/113608658-7ba35900-9668-11eb-8965-7773ab3a3bf6.png)
+
+The idea here is to discuss about extracting information and what kind of information to look for from these documents such as the receipt given above.
+
+## Types of Information
+
+### Header Items
+
+![https://user-images.githubusercontent.com/43090559/113609491-7abef700-9669-11eb-8c46-0eb1565c4c13.png](https://user-images.githubusercontent.com/43090559/113609491-7abef700-9669-11eb-8c46-0eb1565c4c13.png)
+
+These are basically fields that have information that occurs once, they are generally called header field because they should appear ideally on the top of the document but because of variability they might even show up on other sides of the document. This information are useful for purposes like taxing if something has been billed managing inventory etc.
+
+![https://user-images.githubusercontent.com/43090559/113609762-dee1bb00-9669-11eb-85cb-07f2a8fd85e1.png](https://user-images.githubusercontent.com/43090559/113609762-dee1bb00-9669-11eb-85cb-07f2a8fd85e1.png)
+
+These data are generally extracted by first putting bounding boxes around them along with OCR and then building a classier for the information in these bounding boxes to predict what information is what. Some challenges here are things like the receipt total there are values that represent money more than once in the bill which is repeating and the model might tag any of these as receipt total, the way to solve this is by accompanying the machine learning algorithms with some handwritten heuristics that but having these heuristics will actually make the system more brittle and engineers need to be more careful on how we are handling such data. Another challenge would be on vendor address after doing OCR on them and finishing classification the order in which they should occur should be considered as well.
+
+Another challenging session is line items
+
+![https://user-images.githubusercontent.com/43090559/113615755-e3aa6d00-9671-11eb-83f1-49a71b34eae0.png](https://user-images.githubusercontent.com/43090559/113615755-e3aa6d00-9671-11eb-83f1-49a71b34eae0.png)
+
+The next challenge is with list items even though we as humans understand what item corresponds to what it is hard for a machine-learning algorithm to understand this. This is more challenging when the format of the forms are not going to be the same all the time they can come in all forms of shapes and sizes and the order might change a lot so corresponding one object to another is a big challenge here.
+
+![https://user-images.githubusercontent.com/43090559/113616491-c5913c80-9672-11eb-8620-1135dcb844de.png](https://user-images.githubusercontent.com/43090559/113616491-c5913c80-9672-11eb-8620-1135dcb844de.png)
+
+Another source for training such models would be some form os system of record like the relational database that is shown above.
+
+## Representing document schema
+
+![https://user-images.githubusercontent.com/43090559/113616704-14d76d00-9673-11eb-8b3e-e100754fa7e0.png](https://user-images.githubusercontent.com/43090559/113616704-14d76d00-9673-11eb-8b3e-e100754fa7e0.png)
+
+This is the schema that is generally used to represent such informations it is something similar to json data, the variables in these documents are very self explanitory.
+
+The challenge is to represent raw data as these information and we have such information and raw data to train our model.
+
+## Philosophy of Deep Learning
+
+![https://user-images.githubusercontent.com/43090559/113653148-e4172800-96b2-11eb-82b3-e36c101a61c2.png](https://user-images.githubusercontent.com/43090559/113653148-e4172800-96b2-11eb-82b3-e36c101a61c2.png)
+
+The classical approach to solving a problem is first to divide the problem into sub-parts and then work on solving each of these parts, for the case of machine learning each of these problems are treated as a learning problem and they should also be solved by finding a data defining the objectives for the problem and then training the model. Then comes integrating all these subparts together which is also a hard problem because they may not work well and there should be hand engineered code to solve each of these problems. The error propagation might be more as the number of parts increases and data is necessary for each of these parts.
+
+A better way to solve this is to follow an end-to-end deep learning approach, hereafter dividing into components each component is treated as a subnetwork. In the model, the networks are pieced together and treated as a single neural network is trained end to end. This does not have to be further integrated as they are already a single neural network and the easy to maintain. We also need only a single source of data.
+
+So how is pre-processing happens for document intelligence ?
+
+The whole problem is treated as a parsing problem.
+
+![https://user-images.githubusercontent.com/43090559/113654163-dfec0a00-96b4-11eb-9768-e6e819244282.png](https://user-images.githubusercontent.com/43090559/113654163-dfec0a00-96b4-11eb-9768-e6e819244282.png)
+
+The documents are first parsed with deep neural networks to form number of parse trees and the from these parse trees the most probable one is taken and read line by line the system of data without any post-processing.
+
+![https://user-images.githubusercontent.com/43090559/113655284-22aee180-96b7-11eb-96f3-a760d8df567e.png](https://user-images.githubusercontent.com/43090559/113655284-22aee180-96b7-11eb-96f3-a760d8df567e.png)
+
+## Context Free Grammars
+
+If we have to construct a parse tree we need a context free grammars to parse against, context free grammars are of the most important topics of computer science and they are the back bone of many programming langagues.
+
+![https://user-images.githubusercontent.com/43090559/113656426-82a68780-96b9-11eb-8485-51081ef57569.png](https://user-images.githubusercontent.com/43090559/113656426-82a68780-96b9-11eb-8485-51081ef57569.png)
+
+Grammar has a set of rules that can be used to replace the elements that we are reading to construct a parse tree, the grammar shown on the right describes how we can do this replacement in the context of the elements that we are reading line by line.
+
+![https://user-images.githubusercontent.com/43090559/113656610-dca74d00-96b9-11eb-96e5-873f2240ff82.png](https://user-images.githubusercontent.com/43090559/113656610-dca74d00-96b9-11eb-96e5-873f2240ff82.png)
+
+So here we can see that there might be some forms of ambiguity that can occur for example the machine might think that 3 might also correspond to a Total Amount rather than a price the idea is to resolve these ambiguity by using a deep network, first there are scores that are assigned for each of the grammer.
+
+![https://user-images.githubusercontent.com/43090559/113657395-79b6b580-96bb-11eb-8ecc-cc28f0a937cd.png](https://user-images.githubusercontent.com/43090559/113657395-79b6b580-96bb-11eb-8ecc-cc28f0a937cd.png)
+
+Then we try to use rules that have high score, every rule will have a deep network corresponding to that rule and it will give the score for that rule.
+
+So how do we apply these rules ?
+
+![https://user-images.githubusercontent.com/43090559/113659516-d4521080-96bf-11eb-82e7-264ec0830272.png](https://user-images.githubusercontent.com/43090559/113659516-d4521080-96bf-11eb-82e7-264ec0830272.png)
+
+Since there are models constructed for each of the grammar we can pass this value with an ambiguity to each fo the model to return a score. Over time the model learns that the deep network for total score and the deep network for price will have a higher score.
+
+What kinds of ambiguity can appear ?
+
+![https://user-images.githubusercontent.com/43090559/113659679-31e65d00-96c0-11eb-9284-ebd4eea93615.png](https://user-images.githubusercontent.com/43090559/113659679-31e65d00-96c0-11eb-9284-ebd4eea93615.png)
+
+The first kind is where there are more than one kind of choices that we can make in this case we can either do CP or go with DP but here the grammar itself corrects this error because there is no right hand side that mentions a possibility of DP appearing.
+
+![https://user-images.githubusercontent.com/43090559/113659881-a1f4e300-96c0-11eb-877a-dfe6fb73e18e.png](https://user-images.githubusercontent.com/43090559/113659881-a1f4e300-96c0-11eb-877a-dfe6fb73e18e.png)
+
+The next possibility is when these notations are allowed, in this case we score each of them by passing the left hand side of the tree and the right hand side of the tree to the model and generate the score for the same.
+
+So how do we score the whole tree ?
+
+![https://user-images.githubusercontent.com/43090559/113660094-07e16a80-96c1-11eb-983a-6145fced0412.png](https://user-images.githubusercontent.com/43090559/113660094-07e16a80-96c1-11eb-983a-6145fced0412.png)
+
+We score the whole tree by using the following notation the <Latex>$c(T)$</Latex> represents the tree, then the score is calculated by using <Latex>$c(L,0,n)$</Latex> here the L represents the root of the tree the other two terms are the range of the notation. We can also use the same notation for a subtree as well.
+
+![https://user-images.githubusercontent.com/43090559/113660323-71617900-96c1-11eb-8f34-f135f4eb7e59.png](https://user-images.githubusercontent.com/43090559/113660323-71617900-96c1-11eb-8f34-f135f4eb7e59.png)
+
+The score is then defined recursively with the tree that it was made up of.
+
+![https://user-images.githubusercontent.com/43090559/113660416-a2da4480-96c1-11eb-958e-74a8f114c57c.png](https://user-images.githubusercontent.com/43090559/113660416-a2da4480-96c1-11eb-958e-74a8f114c57c.png)
+
+The goal here is to find the maximum score so we need to rewrite the term in such a way that this is done.
+![https://user-images.githubusercontent.com/43090559/113757244-0307cf80-9730-11eb-9b92-2fca521549f2.png](https://user-images.githubusercontent.com/43090559/113757244-0307cf80-9730-11eb-9b92-2fca521549f2.png)
+
+
+Then we use dynamic programming to find the highest scoring parse tree.
+
+We have now defined a scoring mechanism for parse trees for these line items, we can then choose among all possible parse trees with different scores. One with the highest score is the one we consider the most likely and the one we consider the most likely is the one with the information that we care about.
+
+We will then train the deep network to select the most possible parse trees,
+
+Each of these terms on the right side of the network represents a deep network and they are defined recursively so if we unroll this network we would end up with a big deep network. This large network is built for each and every document that we are trying to parse.
+
+How do we train these networks ?
+
+## Learning objectives and Training
+
+![https://user-images.githubusercontent.com/43090559/113683478-e0e76080-96e1-11eb-99e4-0f44218b11dd.png](https://user-images.githubusercontent.com/43090559/113683478-e0e76080-96e1-11eb-99e4-0f44218b11dd.png)
+
+The learning objective here is similar to any kinds of learning objective for a structured prediction our goal is to maximise the amount of parse trees with more score and to minimise the parse trees with less score and this is exactly what is defined by our loss function. After training this network we will be left with an end to end system for parsing these documents.
+
+This is how we would handle the data in 1D but lets us see how we can do this in 2d.
+
+## 2-dimensional parsing
+
+![https://user-images.githubusercontent.com/43090559/113684850-40923b80-96e3-11eb-97c6-905631fe8b44.png](https://user-images.githubusercontent.com/43090559/113684850-40923b80-96e3-11eb-97c6-905631fe8b44.png)
+
+In the left hand side we can see the data which has to be extracted and on the right hand side is the target of what we should get as the result of parsing these data. We do OCR on these data and create scoring based on the network as we have seen before. There are also some extra data shown by the red bounding boxes which are removed to simplify the parsing.
+
+So why should we 2d Parsing ?
+
+![https://user-images.githubusercontent.com/43090559/113685373-cdd59000-96e3-11eb-86c0-df020a16e1ec.png](https://user-images.githubusercontent.com/43090559/113685373-cdd59000-96e3-11eb-86c0-df020a16e1ec.png)
+
+If we look at one of the line items that was shown before and try to think of this in a 1d manner we can see that it has lost its continuity. It has lots its representation and the result is a truncated description field for the line item. This is why the need for 2d parsing arises because we can use this to maintain continuity and it also representative of how we humans interpret data.
+
+We start with the tokens and then pass them through the deep network and get labels for that the deep network thinks what each of the tokens is.
+
+![https://user-images.githubusercontent.com/43090559/113685935-60762f00-96e4-11eb-9ffc-68c58b6c6b9c.png](https://user-images.githubusercontent.com/43090559/113685935-60762f00-96e4-11eb-9ffc-68c58b6c6b9c.png)
+
+For the first combination we can do a horizontal parsing because we have a clearly defined grammar that states what to do when two descriptions arises together.
+
+We could next go with combining with the Total Amount on the right but the problem is that this would leave the other bounding boxes dangling and the result would not be an ideal pass even though the grammar for the same is already mentioned.
+
+We do not have to define what the direction of the next parse is going to be because the deep network would predict what is the most probable next parse.
+
+We can now continue doing vertical parse till the last term.
+
+![https://user-images.githubusercontent.com/43090559/113686685-25c0c680-96e5-11eb-85fb-ce9f0eec350f.png](https://user-images.githubusercontent.com/43090559/113686685-25c0c680-96e5-11eb-85fb-ce9f0eec350f.png)
+
+Finally we can do the horizontal parse for the Q with the total amount and the parse would end as a Line Item.
+
+## Handling noise in the parsing
+
+Earlier we described that the document might have some irrelevant text how do we handle them ?
+
+![https://user-images.githubusercontent.com/43090559/113687284-cca56280-96e5-11eb-9999-ab18f101b8e6.png](https://user-images.githubusercontent.com/43090559/113687284-cca56280-96e5-11eb-9999-ab18f101b8e6.png)
+
+We handle them by allowing the deep network to classify them as a token called noise. This noise class will also have some grammar defined which can be used to handle these noises.
+
+The first condition is that two noise can be combined to form one noise.
+
+![https://user-images.githubusercontent.com/43090559/113687684-39b8f800-96e6-11eb-9663-a3ea18ec59fa.png](https://user-images.githubusercontent.com/43090559/113687684-39b8f800-96e6-11eb-9663-a3ea18ec59fa.png)
+
+Then we add another rule saying that surroundings a description can be noise which can be treated as a description. The ! indicates that the noise can come before or after the description.
+
+![https://user-images.githubusercontent.com/43090559/113688336-d7142c00-96e6-11eb-8764-fd3326d9bf77.png](https://user-images.githubusercontent.com/43090559/113688336-d7142c00-96e6-11eb-8764-fd3326d9bf77.png)
+
+Finally we can combine two Description to get one description hence the irrelevant information is handled.
+
+![https://user-images.githubusercontent.com/43090559/113688599-1773aa00-96e7-11eb-8b2b-b7e15e900169.png](https://user-images.githubusercontent.com/43090559/113688599-1773aa00-96e7-11eb-8b2b-b7e15e900169.png)
+
+Finally we end up with right parse tree for the document and we will get the matching information as shown above.
+
+## Experimental Results from EY
+
+![https://user-images.githubusercontent.com/43090559/113689157-a385d180-96e7-11eb-8f93-fc81528d9288.png](https://user-images.githubusercontent.com/43090559/113689157-a385d180-96e7-11eb-8f93-fc81528d9288.png)
+
+EY has tested their experiment with Clover AI where they use recipes as a dataset which is the same case for EY but they require every bounding box of the receipt to be annotated whereas EY rely on the records to get the JSON format which does not have the bounding box coordinates and they are able to achieve comparable results by using a better technique.
+
+---
+
+## Sources
+
+MIT introtodeeplearning : [http://introtodeeplearning.com/](http://introtodeeplearning.com/)
+
+Paper : [https://arxiv.org/abs/2103.05908](https://arxiv.org/abs/2103.05908)
+
+---
