@@ -1,0 +1,158 @@
+---
+title: 'Part 11 : Following along MIT intro to deep learning'
+publishedAt: '2021-04-22'
+summary: 'Towards AI for 3d Content Creation'
+image: '/static/images/part1-following-along-mit-intro-to-deep-learning/banner.png'
+---
+## Towards AI for 3d Content Creation
+
+## Introduction
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/NgcYLIvlp_k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+A lot of advancements has been made in the field of AI as we know but also these advancements have been a support for advancements in the field of 3d Content creation with the support of AI.
+
+This video is created with the help of [Omniverse](https://developer.nvidia.com/nvidia-omniverse-platform). All the content that is rendered in the video is rendered in real-time compared to the traditional rendering approaches.
+
+## 3D Content
+
+3D content is almost everywhere these days,
+
+1. Architecture - Designers model rooms and spaces that are to be build using 3d modelling
+2. Gaming - All latests games that are available are build using 3D
+3. Films - Most of the latest films that we watch these days have lot of graphics that are rendered 3D content
+4. VR - Characters in VR are rendered using 3D graphics
+5. Healthcare 
+6. Robotics - This is an especially exciting one since it is used for creating simulations which can be used by AI to learn from these simulated environments and these learning can be applied to the real world.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DXsLDyiONV4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+In the 3d world most of the characters objects are already labeled this is very helpful to test and train these AI models as all the ground truth is already labelled and once they prove good in testing in these simulations they can be moved to the real world for more testing.
+
+![https://user-images.githubusercontent.com/43090559/115107912-3b5aa980-9f8b-11eb-9def-36a08ebcfdde.png](https://user-images.githubusercontent.com/43090559/115107912-3b5aa980-9f8b-11eb-9def-36a08ebcfdde.png)
+
+The new idea is that if we can simulate cities itself for training these robots, It does not just look good from a satellite view but also has good details in street level so that they have very good performance when training and testing AI. The problem is that doing this manually would take a lot of time.
+
+![https://user-images.githubusercontent.com/43090559/115107994-aad09900-9f8b-11eb-9cee-42c35fc2d0d9.png](https://user-images.githubusercontent.com/43090559/115107994-aad09900-9f8b-11eb-9cee-42c35fc2d0d9.png)
+
+The game GTA 5 took a team of 1000 engineers working full time over 3 years to create along with 250,000 photographs and many hours of video footage to that could give them the idea of projecting Los Angeles. AI can help here.
+
+## AI for 3D Content Creation
+
+This that AI can learn to synthesise are
+
+- Worlds → The scene composition
+    - Scene Layout → How are the objects in the scene placed
+    - Assets → Objects in the scene and other elements in the scene
+- Scenarios → Position and goals of actors
+    - Behaviour → How these actors are going to behave in the world
+    - Animation → How realistic the motion of the actors are
+
+## Synthesizing Worlds
+
+The idea is that we can use some generative models to synthesise scenes for the world from images. So depending upon what part of the world we want to simulate we should be able to change the elements in the scenes. The way to approach this problem is by thinking about how games do scene composition. 
+
+![https://user-images.githubusercontent.com/43090559/115110577-c347b000-9f99-11eb-879d-685772391615.png](https://user-images.githubusercontent.com/43090559/115110577-c347b000-9f99-11eb-879d-685772391615.png)
+
+Here a probabilistic grammar is constructed which would decide on how these elements should be rendered. Currently, the distribution according to which these elements are rendered is determined by the artist the idea is that we use AI to learn these distributions so that it can be generated automatically.
+
+## Scene composition
+
+![https://user-images.githubusercontent.com/43090559/115111352-9b5a4b80-9f9d-11eb-8164-9b99983f3c87.png](https://user-images.githubusercontent.com/43090559/115111352-9b5a4b80-9f9d-11eb-8164-9b99983f3c87.png)
+
+The paper Meta-Sim discusses how we can synthesise these scenes, It was already said that there are these Probabilistic grammar that are used to generate the scene graph these graphs are then passed down to a Distributed transformer which would generate the transformed scene graphs that is then rendered to generate synthetic scenes, these scenes have a probability distribution which is compared to the distribution of the real scenes using Maximum Mean Discrepancy and the back propagation is done as normal numerical values.
+
+These tasks can actually be optimised using as task network.
+
+![https://user-images.githubusercontent.com/43090559/115111474-2dfaea80-9f9e-11eb-8599-ae479c64ace4.png](https://user-images.githubusercontent.com/43090559/115111474-2dfaea80-9f9e-11eb-8599-ae479c64ace4.png)
+
+For example, if we are doing object detection on these synthetic scenes we can train a task network here as well as on the real data and then backpropagate these scores back to the transformed scene graph and to the distribution transformer.
+
+Training the distribution for the attributes are kind of like the easy part the hard part is to learn the structure of these graphs. So if we are moving to a different environment like a village how do we learn the structure of the graphs so that it represents the elements of a village.
+
+![https://user-images.githubusercontent.com/43090559/115111828-e1b0aa00-9f9f-11eb-8f3b-2d07b128d63a.png](https://user-images.githubusercontent.com/43090559/115111828-e1b0aa00-9f9f-11eb-8f3b-2d07b128d63a.png)
+
+The idea is to train a network that will learn to sample from this probabilistic context-free grammar. We would be having some form of latent vector, we know from the scene graph what is the element we should be generating so we would mask the probabilities of the other elements. Then we would be able to know the correct probabilities for the next symbol we should be sampling. Each step this would be generating a rule until it reaches a terminal state where we can stop sampling. This would be generating a new graph and using the technique discussed above we can augment the rendering of the scene. This help us to generate the actual structure of the scene as well as the attributes in that scene. 
+
+So how does this result in ?
+
+  
+
+![https://user-images.githubusercontent.com/43090559/115193538-f01ad500-a109-11eb-864d-f6e006c44e3b.png](https://user-images.githubusercontent.com/43090559/115193538-f01ad500-a109-11eb-864d-f6e006c44e3b.png)
+
+The prior is set purposefully to perform really bad, KITTI is a real world driving dataset and the learned model actually performs similar to this dataset.
+
+This model can be evaluated by sampling from this model.
+
+![https://user-images.githubusercontent.com/43090559/115194084-97980780-a10a-11eb-9aaf-1c77ad1c9adf.png](https://user-images.githubusercontent.com/43090559/115194084-97980780-a10a-11eb-9aaf-1c77ad1c9adf.png)
+
+## Synthesizing Medical Data
+
+![https://user-images.githubusercontent.com/43090559/115200787-370cc880-a112-11eb-9384-302664f5770d.png](https://user-images.githubusercontent.com/43090559/115200787-370cc880-a112-11eb-9384-302664f5770d.png)
+
+Medical data is very hard to come by this is where generating such data would be extremely helpful similar to how we generate the driving data this can also be done.
+
+## Recovering rules of the world
+
+Now that we have generated the environments we should be able to generate the rules as well for these environments this can be done by considering roads as graphs with nodes are control points and edges as road segments
+
+![https://user-images.githubusercontent.com/43090559/115204242-e5663d00-a115-11eb-8319-6fa6327a3323.png](https://user-images.githubusercontent.com/43090559/115204242-e5663d00-a115-11eb-8319-6fa6327a3323.png)
+
+The idea here is to maintain a queue of unvisited nodes and then at each iteration take a node from the queue and expand and when the region size is reached we finish the iteration.
+
+![https://user-images.githubusercontent.com/43090559/115442665-e55a6000-a22f-11eb-96c0-552d14f7bd4d.png](https://user-images.githubusercontent.com/43090559/115442665-e55a6000-a22f-11eb-96c0-552d14f7bd4d.png)
+
+## Object Creation
+
+Most of these things have now be generated but again generating objects is also a hard task the artist still has to work on this, even though many of these are available online it is not a good idea to buy or get from online these 3d objects because for a big project this could not be the best solution.
+
+So in order to solve this task AI is used to take pictures and synthesise 3D content from that pictures.
+
+![https://user-images.githubusercontent.com/43090559/115444659-7a5e5880-a232-11eb-85b0-44cd5be8eae6.png](https://user-images.githubusercontent.com/43090559/115444659-7a5e5880-a232-11eb-85b0-44cd5be8eae6.png)
+
+## Graphics via differentiable rendering
+
+The idea in graphics rendering is that there is a mesh, some lighting and a texture and this is passed on to a rendered to produce an image. But if we are able to make the graphics rendered differentiable we can say the opposite that given an image we are able to produce mesh, light and texture.
+
+![https://user-images.githubusercontent.com/43090559/115542097-893e1d00-a2bd-11eb-853c-641ce4f17210.png](https://user-images.githubusercontent.com/43090559/115542097-893e1d00-a2bd-11eb-853c-641ce4f17210.png)
+
+![https://user-images.githubusercontent.com/43090559/115542200-a96ddc00-a2bd-11eb-8f59-668356bbc876.png](https://user-images.githubusercontent.com/43090559/115542200-a96ddc00-a2bd-11eb-8f59-668356bbc876.png)
+
+This bottleneck model is used to do exactly that, the neural network would produce the 3d components and these components are passed to a rendered where it will produce a rendered image this image is compared to the input image to find the loss which can be propagated back to the network. The 3d components are sent to a renderer because we don't have the ground truth for each of these objects.
+
+![https://user-images.githubusercontent.com/43090559/115543040-927bb980-a2be-11eb-9b3e-2292a153c7fd.png](https://user-images.githubusercontent.com/43090559/115543040-927bb980-a2be-11eb-9b3e-2292a153c7fd.png)
+
+## Data Generation
+
+Generating the data should also be a more smart approach we already know that we can use GAN's to generate images but here we do something different we still use a GAN but there would be a particular variable in the latent vector that controls the view point on the GAN this can be changed in order to obtain different view points of the object.
+
+![https://user-images.githubusercontent.com/43090559/115613931-aa792a80-a30a-11eb-8199-35cab5b19900.png](https://user-images.githubusercontent.com/43090559/115613931-aa792a80-a30a-11eb-8199-35cab5b19900.png)
+
+This is the data that can then be used to train the differentiable rendered model. This is implemented in the omniverse software which allows to convert the picture of car to a 3d object.
+
+## Neural Simulation
+
+The idea here is that the AI would watch how a human would play a game and then try to recreate the game itself this is what Nvidia has done with the help of game gan.
+
+The initial phase of this was to try and simulate how the game engine works.
+
+![https://user-images.githubusercontent.com/43090559/115670848-7e3fc700-a367-11eb-840e-f8f27c1e364b.png](https://user-images.githubusercontent.com/43090559/115670848-7e3fc700-a367-11eb-840e-f8f27c1e364b.png)
+
+This idea can then be transformed to simulating 3D games and even real worlds.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4OzJUNsPx60" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Currently Nvidia has a version that is training on real driving video.
+
+## 3D deep learning library
+
+Nvidia has developed a 3D deep learning library for everyone to use [Kaolin](https://developer.nvidia.com/nvidia-kaolin).
+
+---
+
+## Sources
+
+MIT introtodeeplearning : [http://introtodeeplearning.com/](http://introtodeeplearning.com/)
+
+---
