@@ -66,8 +66,8 @@ export default function About() {
             I’ve spoken across the country at conferences and meet-ups about
             front-end development, design, and recruiting. I write about
             development, tech careers, and my personal life on&nbsp;
-            <Link href="/newsletter">
-              <a>my newsletter.</a>
+            <Link href="/newsletter" className="underline">
+              my newsletter.
             </Link>
           </p>
           <p>
