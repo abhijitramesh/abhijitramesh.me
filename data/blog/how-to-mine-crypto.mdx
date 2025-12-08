@@ -39,7 +39,7 @@ In a nutshell, if you have the hash of, let's say your Aadhar number, you can pr
 
 Merkle Tree is a data structure, much like arrays or queues. A Merkle Tree is a tree in which every leaf node is labelled with the cryptographic hash of a data block, and every non-leaf node is labelled with the cryptographic hash of the labels of its child nodes. Hash trees allow efficient and secure verification of the contents of large data structures.
 
-To interpret the image above, let's say we have two pairs of two different files on the top of the tree {red, yellow} and {blue, green }. If we hash them together we will have two new hashes, orange and cyan. If we further have it we will have a new hash and this here is a root of the first tree (tree on the left). So if you look at the tree on the right let's say we change one of the input colours the preceding hashes will also change like on the 2nd row for the 2nd Merkle tree the colour has changed and the next one on the root will also change.
+To interpret the image above, let's say we have two pairs of two different files on the top of the tree \{red, yellow\} and \{blue, green \}. If we hash them together we will have two new hashes, orange and cyan. If we further have it we will have a new hash and this here is a root of the first tree (tree on the left). So if you look at the tree on the right let's say we change one of the input colours the preceding hashes will also change like on the 2nd row for the 2nd Merkle tree the colour has changed and the next one on the root will also change.
 
 So if you look at the tree on the right let's say we change one of the input colours the preceding hashes will also change like on the 2nd row for the 2nd Merkle tree the colour has changed and the next one on the root will also change.
 
@@ -459,13 +459,13 @@ Make sure that you have downloaded the mining application of your choice as well
 ```
 In the highlighted line replace -G with -U if you are using a Nvidia driver, replace
 
-**<Mining_Pool_Address>** with your pool address
+**`<Mining_Pool_Address>`** with your pool address
 
-**<Your_Ethereum_Wallet_Address>** with your wallet address
+**`<Your_Ethereum_Wallet_Address>`** with your wallet address
 
-**<Friendly_Name_For_Computer>** and a name for your computer
+**`<Friendly_Name_For_Computer>`** and a name for your computer
 
-make sure to replace everything including the  (angle brackets)
+make sure to replace everything including the angle brackets
 
 Rename the txt file to .bat file to be able to execute it. ie.. Start.txt to Start.bat
 
@@ -489,12 +489,14 @@ Rename the txt file to .bat file to be able to execute it. ie.. Start.txt to Sta
 
 `EthDcrMiner64.exe -epool <Mining_Pool_Address> -ewal <Your_Ethereum_Wallet_Address>.<Friendly_Name_For_Computer> -epsw x`
 ```
-**<Mining_Pool_Address>** with your pool address
 
-**<Your_Ethereum_Wallet_Address>** with your wallet address
+**`<Mining_Pool_Address>`** with your pool address
 
-**<Friendly_Name_For_Computer>** and a name for your computer
-make sure to replace everything including the (angle brackets)
+**`<Your_Ethereum_Wallet_Address>`** with your wallet address
+
+**`<Friendly_Name_For_Computer>`** and a name for your computer
+
+make sure to replace everything including the angle brackets
 
 Rename the txt file to .bat file to be able to execute it. ie.. Start.txt to Start.bat
 

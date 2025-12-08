@@ -70,15 +70,11 @@ We apply the recurrence relation,
 <Latex> $h_t = f_w (x_t,h_t-1)$ </Latex>
 
 Here,
-<ul>
-<li><Latex> $h_t$  is the cell state </Latex></li>
 
-<li><Latex> $f_w$ is the function with weights W </Latex></li>
-
-<li><Latex> $x_t$ is the input </Latex></li>
-
-<li><Latex> $h_\bgroup t-1 \egroup$ is the old state</Latex></li>
-</ul>
+- <Latex> $h_t$  is the cell state </Latex>
+- <Latex> $f_w$ is the function with weights W </Latex>
+- <Latex> $x_t$ is the input </Latex>
+- <Latex> $h_\bgroup t-1 \egroup$ is the old state</Latex>
 
 ```python
 my_rnn = RNN()
@@ -272,13 +268,11 @@ One of the most common and state of the art of such cells are LSTMs.
 
 A standard RNN have the following features
 
-<ul>
-<li> <Latex>a $h_\bgroup t-1 \egroup $ which is coming from the previous state</Latex></li>
-<li><Latex> An input $x_t$</Latex></li>
-<li> <Latex>After being multiplied with their respective weights they are passed through a tanh activation</Latex></li>
-<li><Latex>An output $y_t$</Latex></li>
-<li><Latex>A hidden layer update $h_t$</Latex></li>
-</ul>
+- <Latex>a $h_\bgroup t-1 \egroup $ which is coming from the previous state</Latex>
+- <Latex> An input $x_t$</Latex>
+- <Latex>After being multiplied with their respective weights they are passed through a tanh activation</Latex>
+- <Latex>An output $y_t$</Latex>
+- <Latex>A hidden layer update $h_t$</Latex>
 
 But an LSTM looks something like this,
 <Image
@@ -297,6 +291,7 @@ These are gates which allows the LSTM to do four functions,
 2. Store
 3. Update
 4. Output
+
 <Image
   alt={`Image`}
   src={`/static/images/part2-following-along-mit-intro-to-deep-learning/Screenshot_2021-03-14_at_4.59.25_PM.png`}
