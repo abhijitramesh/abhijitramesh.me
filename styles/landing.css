@@ -2,15 +2,16 @@
   .landing-hero {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-6);
-    margin-block: var(--space-8) var(--space-12);
+    gap: var(--space-4);
+    margin-block: var(--space-8) var(--space-16);
   }
 
   .landing-hero .name {
-    font-size: var(--text-2xl);
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
+    font-size: clamp(2.5rem, 6.5vw, var(--text-display));
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 0.98;
+    margin-block: var(--space-2) var(--space-3);
   }
 
   .landing-hero .oneliner {
@@ -18,6 +19,29 @@
     color: var(--color-fg-muted);
     line-height: var(--leading-snug);
     max-width: 56ch;
+  }
+
+  .landing-hero .availability {
+    margin-top: var(--space-4);
+    font-size: var(--text-sm);
+    color: var(--color-fg);
+    border-left: 2px solid var(--color-accent);
+    padding-left: var(--space-3);
+    max-width: 56ch;
+  }
+
+  .landing-hero code {
+    background: none;
+    border: 0;
+    padding: 0;
+    font-size: 0.95em;
+    color: var(--color-fg);
+  }
+
+  .landing-rule {
+    border: 0;
+    border-top: 1px solid var(--color-border-subtle);
+    margin-block: var(--space-12);
   }
 
   .landing-section p {

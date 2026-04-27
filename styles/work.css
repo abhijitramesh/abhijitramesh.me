@@ -37,28 +37,66 @@
     max-width: 60ch;
   }
 
-  .highlights {
+  .org > p {
+    line-height: var(--leading-relaxed);
+    max-width: 64ch;
+    margin-block: var(--space-4);
+    font-size: var(--text-md);
+  }
+
+  .org > p:last-child {
+    margin-bottom: 0;
+  }
+
+  .org > p strong {
+    color: var(--color-fg);
+    font-weight: 600;
+  }
+
+  .org { scroll-margin-top: var(--space-8); }
+
+  .chapter-rail {
+    grid-row: 2 / -1;
+    align-self: start;
+    padding-left: var(--space-8);
+    margin: 0;
+  }
+
+  .chapter-rail ol {
+    position: sticky;
+    top: var(--space-12);
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
-  }
-
-  .highlights li {
-    line-height: var(--leading-relaxed);
+    display: grid;
+    gap: var(--space-3);
+    border-left: 1px solid var(--color-border-subtle);
     padding-left: var(--space-4);
-    border-left: 2px solid var(--color-border-subtle);
-    max-width: 64ch;
   }
 
-  .highlights li:hover {
-    border-left-color: var(--color-accent);
+  .chapter-rail a {
+    display: grid;
+    gap: 2px;
+    color: var(--color-fg-muted);
+    text-decoration: none;
+    padding-block: var(--space-1);
+    line-height: var(--leading-tight);
   }
 
-  .highlights strong {
-    color: var(--color-fg);
-    font-weight: 600;
+  .chapter-rail a:hover { color: var(--color-fg); }
+
+  .chapter-rail .rail-year {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-fg-subtle);
+    letter-spacing: 0.06em;
+  }
+
+  .chapter-rail .rail-label {
+    font-size: var(--text-sm);
+  }
+
+  @media (max-width: 1100px) {
+    .chapter-rail { display: none; }
   }
 }

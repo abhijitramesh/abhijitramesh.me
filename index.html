@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Abhijit Ramesh</title>
-  <meta name="description" content="UCSC MS CS, llama.cpp WebGPU contributor, ex healthcare-AI lead. Five years of medical AI before grad school; now writing GPU kernels so language models run in browsers.">
+  <meta name="description" content="UCSC MS CS working on the WebGPU backend for llama.cpp. Five years of production medical AI before grad school. Looking for Summer 2026 internships in ML performance and GPU systems.">
   <link rel="icon" href="public/favicon.svg" type="image/svg+xml">
   <meta property="og:title" content="Abhijit Ramesh">
   <meta property="og:description" content="UCSC MS CS, llama.cpp WebGPU contributor, ex healthcare-AI lead.">
@@ -33,24 +33,19 @@
     </nav>
 
     <header class="landing-hero">
-      <p class="meta-line">Santa Cruz, CA</p>
       <h1 class="name">Abhijit Ramesh</h1>
-      <p class="oneliner">UCSC MS CS. Contributing WebGPU shaders to <code>ggml-org/llama.cpp</code> so language models run in browsers without WebAssembly heroics.</p>
+      <p class="oneliner">MS CS at UCSC, working on the WebGPU backend for <code>ggml-org/llama.cpp</code>. Before grad school I spent five years shipping medical AI &mdash; which is what convinced me the bottleneck sits a layer below the model.</p>
+      <p class="availability">Looking for Summer 2026 internships in ML performance / GPU systems &mdash; <a href="mailto:arames12@ucsc.edu">arames12@ucsc.edu</a>.</p>
     </header>
 
     <section class="landing-section">
-      <h2>The arc</h2>
-      <p>I spent five years leading ML at <strong>Theta Tech AI</strong> and <strong>TexNano</strong> &mdash; segmentation models for endoscopic ultrasound, training systems for an FDA-pathway cardiac diagnostic device, and the inference services clinicians used at the point of care. The work shipped. Models live in clinical use today.</p>
-      <p>In late 2025 I left to dig into the systems layer where the model actually runs. I joined Tyler Sorensen&rsquo;s Concurrency and Heterogeneous Programming Lab at UCSC, alongside PhD student Reese Levine, to write the WebGPU backend for llama.cpp. Three PRs merged in Q1 2026 across shader compilation, dispatch limits, and kernel migration. I built the cross-browser benchmark the contributor community uses to validate them.</p>
-      <p>On any given day: WGSL spec edge cases, kernel autotuning, and a coffee in Santa Cruz.</p>
+      <p>I led ML at <strong>Theta Tech AI</strong> and <strong>TexNano</strong>: segmentation models for endoscopic ultrasound, training systems for an FDA-pathway cardiac device, and the production cloud inference services clinicians used at the point of care. Models shipped and are in clinical use. What running that infra taught me is how much money and engineering goes into serving modern models optimally &mdash; and how much of that pressure points toward the edge. Hospitals would rather not send patient data out at all, and the hardware they already own is often capable if someone writes device-specific kernels for it. That gap is where I wanted to work.</p>
+      <p>So I joined <a href="https://tyler-utah.github.io/" rel="noopener">Tyler Sorensen</a>&rsquo;s Concurrency and Heterogeneous Programming Lab at UCSC, working with <a href="https://reeselevine.github.io/" rel="noopener">Reese Levine</a> on the WebGPU backend for llama.cpp. Day to day: WGSL kernels, dispatch and memory limits across browsers, and the cross-browser benchmark I built to validate it all.</p>
     </section>
 
     <section class="landing-section">
-      <h2>Where to go next</h2>
       <ul class="quick-links">
-        <li><a href="work/">Selected work</a> &mdash; the four chapters that got me here</li>
-        <li><a href="labs/">Labs</a> &mdash; live WebGPU benchmark on your GPU</li>
-        <li><a href="https://github.com/abhijitramesh" rel="noopener">GitHub</a> &middot; <a href="https://www.linkedin.com/in/abhijit-ramesh" rel="noopener">LinkedIn</a> &middot; <a href="mailto:arames12@ucsc.edu">arames12@ucsc.edu</a></li>
+        <li><a href="work/">Work</a> &middot; <a href="labs/">Labs</a> &middot; <a href="https://github.com/abhijitramesh" rel="noopener">GitHub</a> &middot; <a href="https://www.linkedin.com/in/abhijit-ramesh" rel="noopener">LinkedIn</a> &middot; <a href="mailto:arames12@ucsc.edu">arames12@ucsc.edu</a></li>
       </ul>
     </section>
 

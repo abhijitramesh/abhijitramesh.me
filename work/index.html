@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Selected work &middot; Abhijit Ramesh</title>
-  <meta name="description" content="Four chapters: WebGPU at UCSC, healthcare AI at Theta Tech AI and TexNano, and open-source contributions through Mifos and GSoC.">
+  <meta name="description" content="Four chapters with one through-line: putting real models in front of real clinicians on real hardware. WebGPU systems at UCSC, medical AI at Theta Tech AI and TexNano, open source through Mifos and GSoC.">
   <link rel="icon" href="../public/favicon.svg" type="image/svg+xml">
   <meta property="og:title" content="Selected work &mdash; Abhijit Ramesh">
-  <meta property="og:description" content="Four chapters: WebGPU at UCSC, healthcare AI at Theta Tech AI and TexNano, and open-source contributions through Mifos and GSoC.">
+  <meta property="og:description" content="Four chapters with one through-line: putting real models in front of real clinicians on real hardware.">
   <meta property="og:image" content="https://abhijitramesh.me/public/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://abhijitramesh.me/public/og-image.png">
@@ -33,65 +33,52 @@
     <header>
       <p class="meta-line">Selected work</p>
       <h1>Where I&rsquo;ve shipped.</h1>
-      <p class="lede">Four chapters: WebGPU systems work at UCSC, healthcare AI at Theta Tech AI and TexNano, and the open-source thread that runs through all of it. Numbers are real, links go to public artifacts.</p>
+      <p class="lede">Four chapters with one through-line: putting real models in front of real clinicians on real hardware. That&rsquo;s what pulled me from medical AI into GPU systems.</p>
     </header>
 
-    <article class="org">
+    <aside class="chapter-rail aside-right" aria-label="Chapters">
+      <ol>
+        <li><a href="#ucsc"><span class="rail-year">2025 &rarr; present</span><span class="rail-label">UCSC &mdash; CHPL</span></a></li>
+        <li><a href="#theta"><span class="rail-year">2022 &rarr; 2025</span><span class="rail-label">Theta Tech AI</span></a></li>
+        <li><a href="#texnano"><span class="rail-year">2021 &rarr; 2025</span><span class="rail-label">TexNano</span></a></li>
+        <li><a href="#oss"><span class="rail-year">2019 &rarr; present</span><span class="rail-label">Open source</span></a></li>
+      </ol>
+    </aside>
+
+    <article class="org" id="ucsc">
       <header class="org-head">
         <p class="org-meta">2025 &rarr; present &middot; Graduate Researcher</p>
-        <h2>UCSC &mdash; Concurrency and Heterogeneous Programming Lab</h2>
-        <p class="org-sub">With Dr. Tyler Sorensen and PhD student Reese Levine. Contributing the WebGPU backend to <a href="https://github.com/ggml-org/llama.cpp" rel="noopener"><code>ggml-org/llama.cpp</code></a> so LLM inference runs in any browser with a GPU.</p>
+        <h2>UCSC &middot; Concurrency and Heterogeneous Programming Lab</h2>
       </header>
-      <ul class="highlights">
-        <li><strong>3 PRs merged to <code>ggml-org/llama.cpp</code> in Q1 2026</strong> &mdash; spanning shader compilation, kernel correctness, and dispatch-limit fixes (<a href="https://github.com/ggml-org/llama.cpp/pull/19310" rel="noopener">#19310</a>, <a href="https://github.com/ggml-org/llama.cpp/pull/19965" rel="noopener">#19965</a>, <a href="https://github.com/ggml-org/llama.cpp/pull/20728" rel="noopener">#20728</a>).</li>
-        <li><strong>Migrated binary operators from AOT template expansion to JIT pre-WGSL compilation</strong>, with automatic source/destination overlap detection and binding correctness across in-place and default cases. Eliminated the Python template-expansion path entirely.</li>
-        <li><strong>Fixed WebGPU&rsquo;s 65,535 workgroup-per-dimension dispatch limit for large batch matrix-multiplies</strong> &mdash; introduced a 2D workgroup-provisioning helper and bounds checks across every <code>mul_mat</code> kernel variant (<code>reg_tile</code>, <code>subgroup_matrix</code>, standard).</li>
-        <li><strong>Ported <code>cpy</code>, <code>glu</code>, <code>rope</code>, and <code>soft_max</code> shaders from AOT to JIT</strong>, completing the migration.</li>
-        <li><strong>Built <a href="https://github.com/abhijitramesh/webgpu-bench" rel="noopener">webgpu-bench</a></strong> &mdash; an end-to-end benchmark that compiles llama.cpp to WebAssembly and drives Chrome and Safari via WebGPU. Validates numerical correctness via forced-decoding consistency. Tracks 10 models across 194 quantization variants. Live dashboard at <a href="https://webgpu-bench.abhijitramesh.me" rel="noopener">webgpu-bench.abhijitramesh.me</a>.</li>
-        <li><strong>Isolated and filed a Q4_K kernel bug in Dawn&rsquo;s Metal backend on Apple Silicon</strong> &mdash; minimal browser and native C++ <a href="https://github.com/reeselevine/dawn-metal-issue" rel="noopener">repro</a> upstream, with two known toggle-fixes documented.</li>
-      </ul>
+      <p>I joined <a href="https://tyler-utah.github.io/" rel="noopener">Tyler Sorensen</a>&rsquo;s lab to work on the WebGPU backend for <a href="https://github.com/ggml-org/llama.cpp" rel="noopener"><code>ggml-org/llama.cpp</code></a>, alongside PhD student <a href="https://reeselevine.github.io/" rel="noopener">Reese Levine</a>. The goal: run modern LLMs on the GPU already in your machine. No native install. No WebAssembly hacks.</p>
+      <p>My contributions span shader compilation, kernel correctness, and dispatch limits. That&rsquo;s the work that closes the gap between WebGPU as a spec and WebGPU as a viable inference target. Alongside the kernel work I built <a href="https://webgpu-bench.abhijitramesh.me" rel="noopener">webgpu-bench</a> &mdash; the cross-browser benchmark the contributor community uses to validate PRs against real hardware. The throughline: make the backend trustworthy enough that someone shipping a product can reach for it.</p>
     </article>
 
-    <article class="org">
+    <article class="org" id="theta">
       <header class="org-head">
         <p class="org-meta">2022 &rarr; 2025 &middot; ML Engineer</p>
-        <h2>Theta Tech AI &mdash; Semler Scientific / QuantaFlo</h2>
-        <p class="org-sub">QuantaFlo is an FDA-pathway medical device that detects Peripheral Arterial Disease from infrared blood-volume waveforms. Joined as data and modeling lead; stayed for the production push.</p>
+        <h2>Theta Tech AI</h2>
       </header>
-      <ul class="highlights">
-        <li><strong>Built the QuantaFlo data and training pipeline from zero in 2022</strong> &mdash; signal preprocessing, self-supervised model research, Optuna hyperparameter search, Neptune experiment tracking, a Dash labeling app on DynamoDB, and a Lambda &rarr; S3 &rarr; EC2 inference pipeline on AWS. Project shipped.</li>
-        <li><strong>171 commits in 2023</strong> transitioning the pipeline from research to production MLOps: Lambda-triggered Step Functions, SageMaker Docker automation, SNS event routing, and cross-account S3/IAM infrastructure.</li>
-        <li><strong>Ground-up rewrote the training stack in 2024</strong> to PyTorch Lightning + Hydra + Optuna + W&amp;B &mdash; primary author across 176 commits &mdash; adding ResNet, Transformer, and tsai time-series architectures plus a YOLO-based Valsalva-maneuver detector as a preprocessing step. Built for FDA submission auditability.</li>
-        <li><strong>Shipped a serverless multi-modal ensemble inference framework in 2025</strong> combining signal-only and signal+spectrogram models across folds. Deployed and handed off to Semler Scientific for production.</li>
-      </ul>
+      <p>Theta Tech AI is a small applied-AI consultancy in medical imaging and signals. I joined as the team scaled up on <strong>QuantaFlo</strong>. QuantaFlo is an FDA-pathway peripheral arterial disease detector. I grew with the project across three production phases. First, the original training and inference pipeline from zero. Then a ground-up rewrite of the training stack for FDA-submission auditability. Then the serverless ensemble inference framework that now runs in production at <strong>Semler Scientific</strong>.</p>
+      <p>In parallel I worked across the company&rsquo;s radiology-AI engagements with university hospitals. For Wisconsin I built a multi-GPU cloud training stack for 3D MRI segmentation. The stack shipped to <strong>Johnson &amp; Johnson</strong> for tumor-volume tracking. For Case Western I built a lung-lesion similarity retrieval system at <strong>92% recall</strong>. The <strong>U.S. Department of Veterans Affairs</strong> deployed it. For Emory I rebuilt a published radiology-AI codebase from scratch so other research groups could reproduce and extend the methods. Three different problem shapes. Three different clients. The same underlying job: get a real model to a clinician at scale.</p>
     </article>
 
-    <article class="org">
+    <article class="org" id="texnano">
       <header class="org-head">
-        <p class="org-meta">2021 &rarr; 2025 &middot; ML Pipeline Engineer</p>
-        <h2>TexNano &mdash; Amrita Medical AI</h2>
-        <p class="org-sub">Lead engineer on the EUS_ML platform &mdash; endoscopic ultrasound machine learning &mdash; and the connected clinical labeling and visualization tools. ~$590K cumulative McGovern Institute funding (2023&ndash;2025). Models in clinical use today.</p>
+        <p class="org-meta">2021 &rarr; 2025 &middot; Lead Engineer</p>
+        <h2>TexNano &middot; Amrita Medical AI</h2>
       </header>
-      <ul class="highlights">
-        <li><strong>Engineered the full EUS video-to-dataset pipeline in 2021</strong> &mdash; frame extraction, EUS-specific artifact filtering (doppler overlays, GUI elements, pointer markings), station-level label generation, and a GPU/CPU inference engine for automatic pancreatic cancer detection. The dataset foundation everything since builds on.</li>
-        <li><strong>Shipped <code>eusml-labeller</code></strong> &mdash; a Remix-based real-time web labeller used by clinicians during live endoscopic procedures, replacing retrospective video review. Added Tumor Timer and patient-data encryption as the platform matured.</li>
-        <li><strong>Built the pancreas segmentation data pipeline (2024&ndash;2025)</strong> from first commit &mdash; video frame extraction, manifest generation, DynamoDB metadata integration, CVAT annotation integration. Tuned sampling strategy down from whole-video extraction to a 25-frame-per-video target.</li>
-        <li><strong>Trained the VR pediatric heart segmentation model (2024&ndash;2025)</strong> from CT scans of pediatric congenital-heart-disease patients. Model is in clinical use as of 2025, feeding a VR surgical-planning visualization. Shipped a standalone inference service so clinicians could run it without touching the ML stack.</li>
-      </ul>
+      <p>TexNano is the medical-AI lab at Amrita Vishwa Vidyapeetham. I joined in 2021 as lead engineer on <strong>EUS_ML</strong>. EUS_ML is the data and training foundation for the lab&rsquo;s endoscopic-ultrasound work. I stayed four years across the platforms that grew on top of it. The pattern I cared about most: build the infrastructure that lets clinicians use the models without touching the ML stack.</p>
+      <p>That shaped everything I shipped here. The data and inference pipeline for pancreatic cancer detection. The real-time web labellers used during <strong>live procedures</strong> rather than retrospective review. The <strong>VR pediatric heart segmentation model</strong> trained on CT scans of congenital-heart-disease patients. That model is in clinical use as of 2025, feeding a VR surgical-planning visualization. The lab&rsquo;s research program drew <strong>~$590K cumulative McGovern Institute funding (2023&ndash;2025)</strong> across this body of work.</p>
     </article>
 
-    <article class="org">
+    <article class="org" id="oss">
       <header class="org-head">
         <p class="org-meta">2019 &rarr; present &middot; Open source</p>
-        <h2>Mifos, Apache, and Google Summer of Code</h2>
-        <p class="org-sub">Long thread of open-source work in financial inclusion through The Mifos Initiative and the Apache Fineract CN project &mdash; client-facing banking software for unbanked populations.</p>
+        <h2>Mifos &amp; GSoC</h2>
       </header>
-      <ul class="highlights">
-        <li><strong>GSoC 2019 &mdash; The Mifos Initiative:</strong> delivered all 12 proposed features and 15 merged PRs on <a href="https://github.com/openMF/mifos-mobile-cn" rel="noopener">Mifos Mobile CN</a>. Migrated the codebase from Java to Kotlin during the program. Shipped the first complete release of the app.</li>
-        <li><strong>GSoC 2020 mentor &mdash; The Mifos Initiative:</strong> guided the next year&rsquo;s contributor through the WSO2 API integration. Project landed; invited to the GSoC Mentor Summit 2020.</li>
-        <li><strong>Apache Fineract CN Mobile</strong> contributions integrating the open banking API layer with the mobile client.</li>
-        <li><strong>Pre-university mentoring</strong> via Google Code-in: designed tasks, reviewed code, carried high-school students through the full PR lifecycle on the same codebase.</li>
-      </ul>
+      <p>A long thread in financial inclusion through The Mifos Initiative and Apache Fineract CN. The work is banking software for unbanked populations. I started as a GSoC 2019 contributor on <a href="https://github.com/openMF/mifos-mobile-cn" rel="noopener">Mifos Mobile CN</a>. Delivered the full proposal. Migrated the codebase from Java to Kotlin. Shipped the app&rsquo;s first complete release.</p>
+      <p>I stayed on as a mentor across three subsequent cycles. In 2020 I mentored the same mobile project and was invited to the GSoC Mentor Summit. In 2021 and 2022 I co-mentored the Mifos/Fineract <strong>ML credit scorecard</strong> line under the Apache Software Foundation umbrella. The 2021 work was federated-learning research on Fineract. The 2022 work was credit-risk and fraud-detection with Airflow + H2O.ai pipelines. The 2021 mentee returned in 2022 as my co-mentor.</p>
     </article>
 
     <footer class="site-footer">
