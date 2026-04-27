@@ -57,7 +57,6 @@
 
   .chapter-rail {
     grid-row: 2 / -1;
-    align-self: start;
     padding-left: var(--space-8);
     margin: 0;
   }
