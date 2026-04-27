@@ -194,25 +194,28 @@ function fmtDates(d) {
   return `${start} \u2192 ${end}`;
 }
 
-const NAV = `
+function nav(active) {
+  const a = (h, name, slug) => `<li><a href="${h}"${active === slug ? ' aria-current="page"' : ""}>${name}</a></li>`;
+  return `
 <nav class="site-nav" aria-label="Primary">
-  <a class="brand" href="/">abhijitramesh.me</a>
+  <a class="brand" href="../">abhijitramesh.me</a>
   <ul>
-    <li><a href="/work/">Work</a></li>
-    <li><a href="/timeline/">Timeline</a></li>
-    <li><a href="/writing/">Writing</a></li>
-    <li><a href="/labs/">Labs</a></li>
-    <li><a href="/colophon.html">Colophon</a></li>
+    ${a("../work/", "Work", "work")}
+    ${a("../timeline/", "Timeline", "timeline")}
+    ${a("../writing/", "Writing", "writing")}
+    ${a("../labs/", "Labs", "labs")}
+    ${a("../colophon.html", "Colophon")}
   </ul>
 </nav>`;
+}
 
 const FOOT = `
 <footer class="site-footer">
   <span>&copy; Abhijit Ramesh</span>
-  <a href="/colophon.html">Colophon</a>
+  <a href="../colophon.html">Colophon</a>
 </footer>`;
 
-function htmlPage({ title, description, css, body }) {
+function htmlPage({ title, description, css, body, active }) {
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -220,15 +223,15 @@ function htmlPage({ title, description, css, body }) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${ESC(title)}</title>
   <meta name="description" content="${ESC(description)}">
-  <link rel="icon" href="/public/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/styles/tokens.css">
-  <link rel="stylesheet" href="/styles/base.css">
-  <link rel="stylesheet" href="/styles/layout.css">
-  <link rel="stylesheet" href="/styles/components.css">
-  ${css.map((c) => `<link rel="stylesheet" href="/styles/${c}.css">`).join("\n  ")}
+  <link rel="icon" href="../public/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../styles/base.css">
+  <link rel="stylesheet" href="../styles/layout.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  ${css.map((c) => `<link rel="stylesheet" href="../styles/${c}.css">`).join("\n  ")}
 </head>
 <body>
-  <main class="page">${NAV}
+  <main class="page">${nav(active)}
   ${body}
   ${FOOT}
   </main>
@@ -267,6 +270,7 @@ async function buildWork() {
       title: "Work \u00b7 Abhijit Ramesh",
       description: "Selected projects \u2014 systems work, browser-side LLM inference, medical AI, open-source.",
       css: ["work"],
+      active: "work",
       body: `<header><p class="meta-line">Work</p><h1>Selected projects.</h1><p class="lede">Systems work, open-source contributions, and the kinds of problems that resist neat abstractions. Three featured, then the rest in reverse chronological order.</p></header>
 <section class="project-list">${cards}</section>`,
     })
@@ -287,7 +291,7 @@ function renderCard(p) {
   const featured = FEATURED.has(p.slug);
   return `<article class="project-card${featured ? " featured" : ""}">
   <div class="row">
-    <h3>${featured ? '<span class="pin" aria-label="featured">&#9733;</span> ' : ""}<a href="/work/${p.slug}.html">${ESC(title)}</a></h3>
+    <h3>${featured ? '<span class="pin" aria-label="featured">&#9733;</span> ' : ""}<a href="${p.slug}.html">${ESC(title)}</a></h3>
     <span class="meta">${dates ? `<span>${ESC(dates)}</span>` : ""}${role ? `<span>${role}</span>` : ""}</span>
   </div>
   ${summary ? `<p class="summary">${summary}</p>` : ""}
@@ -329,7 +333,7 @@ function renderProject(p) {
 
   const body = `<article class="project-page">
   <header>
-    <p class="meta-line"><a href="/work/">&larr; Work</a></p>
+    <p class="meta-line"><a href="./">&larr; Work</a></p>
     <h1>${ESC(title)}</h1>
     ${role || dates ? `<p class="byline">${[dates, role].filter(Boolean).map(ESC).join(" \u00b7 ")}</p>` : ""}
   </header>
@@ -341,6 +345,7 @@ function renderProject(p) {
     title: `${title} \u00b7 Abhijit Ramesh`,
     description,
     css: ["work"],
+    active: "work",
     body,
   });
 }
@@ -386,6 +391,7 @@ async function buildTimeline() {
       title: "Timeline \u00b7 Abhijit Ramesh",
       description: "Annual retrospective \u2014 what shipped, what shifted, year by year.",
       css: ["timeline"],
+      active: "timeline",
       body,
     })
   );

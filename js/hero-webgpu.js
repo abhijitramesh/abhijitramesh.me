@@ -10,7 +10,7 @@ function showFallback(reason) {
   const img = document.createElement("img");
   img.className = "fallback";
   img.alt = "static heatmap fallback";
-  img.src = "/public/hero-fallback.png";
+  img.src = new URL("../public/hero-fallback.png", import.meta.url).href;
   img.width = CW;
   img.height = CH;
   wrap.replaceChild(img, canvas);
@@ -51,7 +51,7 @@ function highlight(src) {
 }
 
 async function loadShader() {
-  const r = await fetch("/wgsl/matmul-tile.wgsl");
+  const r = await fetch(new URL("../wgsl/matmul-tile.wgsl", import.meta.url));
   if (!r.ok) throw new Error("shader fetch failed");
   return r.text();
 }
