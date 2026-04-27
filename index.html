@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="/styles/layout.css">
   <link rel="stylesheet" href="/styles/components.css">
   <link rel="stylesheet" href="/styles/landing.css">
+  <script type="module" src="/js/hero-webgpu.js"></script>
 </head>
 <body>
   <main class="page">
@@ -35,10 +36,11 @@
       <h1 class="name">Abhijit Ramesh</h1>
       <p class="oneliner">UCSC MS CS student and former healthcare-AI lead turned systems engineer, contributing to llama.cpp&rsquo;s WebGPU backend to bring efficient LLM inference to the browser.</p>
 
-      <figure class="canvas-wrap" aria-label="WebGPU hero placeholder">
+      <figure class="canvas-wrap" aria-label="WebGPU compute heatmap">
         <canvas id="hero-canvas" width="320" height="120"></canvas>
       </figure>
-      <figcaption class="caption" id="hero-caption">WebGPU hero loads in Phase 2.</figcaption>
+      <figcaption class="caption" id="hero-caption">Initializing WebGPU\u2026</figcaption>
+      <div id="hero-details-host"></div>
     </header>
 
     <section class="landing-section" aria-labelledby="featured-heading">

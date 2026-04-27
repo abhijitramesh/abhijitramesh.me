@@ -64,6 +64,22 @@
     margin-top: var(--space-2);
     max-height: 320px;
     overflow: auto;
+    line-height: var(--leading-snug);
+  }
+
+  .landing-hero pre.shader .c { color: var(--color-fg-subtle); font-style: italic; }
+  .landing-hero pre.shader .kw { color: oklch(60% 0.16 320); }
+  .landing-hero pre.shader .ty { color: oklch(60% 0.14 180); }
+  .landing-hero pre.shader .at { color: oklch(70% 0.16 80); }
+  .landing-hero pre.shader .bi { color: oklch(60% 0.14 220); }
+  .landing-hero pre.shader .nu { color: oklch(60% 0.16 30); }
+
+  @media (prefers-color-scheme: dark) {
+    .landing-hero pre.shader .kw { color: oklch(78% 0.14 320); }
+    .landing-hero pre.shader .ty { color: oklch(78% 0.13 180); }
+    .landing-hero pre.shader .at { color: oklch(82% 0.14 80); }
+    .landing-hero pre.shader .bi { color: oklch(78% 0.14 220); }
+    .landing-hero pre.shader .nu { color: oklch(78% 0.14 30); }
   }
 
   .landing-section {
