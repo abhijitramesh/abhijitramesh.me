@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}})()</script>
   <title>Not found &middot; Abhijit Ramesh</title>
   <link rel="icon" href="public/favicon.svg" type="image/svg+xml">
     <link rel="preload" href="fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
@@ -46,6 +47,7 @@
         <li><a href="writing/">Writing</a></li>
         <li><a href="labs/">Labs</a></li>
         <li><a href="colophon.html">Colophon</a></li>
+        <li><button class="theme-toggle" type="button" data-theme-toggle aria-label="Theme: auto. Click to cycle.">auto</button></li>
       </ul>
     </nav>
 
@@ -67,5 +69,6 @@
       <a href="colophon.html">Colophon</a>
     </footer>
   </main>
+  <script type="module" src="scripts/theme.js" defer></script>
 </body>
 </html>

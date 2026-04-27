@@ -48,7 +48,7 @@
   }
 
   @media (prefers-color-scheme: dark) {
-    :root {
+    :root:not([data-theme="light"]) {
       --color-bg: oklch(15% 0.005 80);
       --color-bg-elevated: oklch(19% 0.005 80);
       --color-fg: oklch(92% 0.01 80);
@@ -59,6 +59,18 @@
       --color-accent: oklch(74% 0.18 215);
       --color-accent-hover: oklch(82% 0.18 215);
     }
+  }
+
+  :root[data-theme="dark"] {
+    --color-bg: oklch(15% 0.005 80);
+    --color-bg-elevated: oklch(19% 0.005 80);
+    --color-fg: oklch(92% 0.01 80);
+    --color-fg-muted: oklch(70% 0.015 80);
+    --color-fg-subtle: oklch(68% 0.015 80);
+    --color-border: oklch(28% 0.005 80);
+    --color-border-subtle: oklch(22% 0.005 80);
+    --color-accent: oklch(74% 0.18 215);
+    --color-accent-hover: oklch(82% 0.18 215);
   }
 
   @media (prefers-reduced-motion: reduce) {

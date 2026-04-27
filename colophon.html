@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}})()</script>
   <title>Colophon &middot; Abhijit Ramesh</title>
   <meta name="description" content="How this site is built: hand-written HTML, CSS, and JavaScript. No framework, no bundler, no runtime npm.">
   <meta property="og:title" content="Colophon &mdash; Abhijit Ramesh">
@@ -27,6 +28,7 @@
         <li><a href="writing/">Writing</a></li>
         <li><a href="labs/">Labs</a></li>
         <li><a href="colophon.html" aria-current="page">Colophon</a></li>
+        <li><button class="theme-toggle" type="button" data-theme-toggle aria-label="Theme: auto. Click to cycle.">auto</button></li>
       </ul>
     </nav>
 
@@ -90,5 +92,6 @@
       <a href="./">Home</a>
     </footer>
   </main>
+  <script type="module" src="scripts/theme.js" defer></script>
 </body>
 </html>

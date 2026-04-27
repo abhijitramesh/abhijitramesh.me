@@ -36,6 +36,19 @@
     color: var(--color-fg);
   }
 
+  .theme-toggle {
+    background: transparent;
+    border: 0;
+    font: inherit;
+    color: var(--color-fg-muted);
+    cursor: pointer;
+    padding: 0;
+    min-width: 3.5em;
+    text-align: left;
+  }
+
+  .theme-toggle:hover { color: var(--color-fg); }
+
   .site-nav .brand {
     font-weight: 600;
     color: var(--color-fg);

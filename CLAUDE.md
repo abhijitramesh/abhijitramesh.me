@@ -8,7 +8,7 @@ Hand-written static personal site. No framework. No bundler. No runtime npm. No 
 - Zero runtime npm dependencies.
 - All fonts self-hosted in `fonts/`. No CDN font links.
 - No analytics, no trackers, no third-party scripts.
-- No theme toggle UI — light/dark via prefers-color-scheme only.
+- Light/dark follow `prefers-color-scheme` by default; a small auto/light/dark cycle button in the nav lets the user override. Persisted in `localStorage.theme` (`light`/`dark`); absent value means `auto`. Anti-FOUC inline script lives in every page `<head>`; the click handler is `scripts/theme.js`.
 - Per-page CSS files; cascade layers (`@layer reset, tokens, base, components, pages`).
 - No emoji in source.
 - No comments unless they explain a non-obvious why.
@@ -45,6 +45,8 @@ abhijitramesh.me/
     work.css
     labs.css
     colophon.css
+  scripts/
+    theme.js                       # auto/light/dark cycle, persisted in localStorage
   fonts/
     InterVariable.woff2
     InterVariable-Italic.woff2
@@ -94,7 +96,7 @@ custom-domain root.
 
 ## What NOT to add
 
-- "Now playing", view counters, newsletter, theme toggle.
+- "Now playing", view counters, newsletter.
 - Tailwind, CSS-in-JS, PostCSS plugins.
 - Any third-party React component library.
 - Markdown rendering at runtime.
