@@ -21,7 +21,7 @@ Fonts: Inter Variable + JetBrains Mono Variable, both in `fonts/`.
 Color: OKLCH neutrals + one cyan accent (`--color-accent`).
 Type scale: 12, 14, 16, 18, 22, 28, 36, 64.
 Spacing scale: 4, 8, 12, 16, 24, 32, 48, 64, 96.
-Layout: 12-col CSS grid, asymmetric (generous left), 640px content column.
+Layout: CSS grid, symmetric centered content (640px column), with optional right-gutter aside (`.aside-right`) used on /work/ for the sticky chapter rail.
 
 ## File layout
 

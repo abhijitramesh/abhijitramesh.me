@@ -3,7 +3,7 @@
     flex: 1 1 auto;
     display: grid;
     grid-template-columns:
-      [full-start] var(--gutter-left)
+      [full-start] minmax(var(--gutter), 1fr)
       [content-start] minmax(0, var(--content-width))
       [content-end] minmax(var(--gutter), 1fr)
       [full-end];
@@ -14,7 +14,7 @@
 
   .page > * { grid-column: content; }
   .page > .full { grid-column: full; }
-  .page > .gutter-left { grid-column: full-start / content-start; }
+  .page > .aside-right { grid-column: content-end / full-end; }
 
   .site-nav {
     grid-column: content;
@@ -84,6 +84,7 @@
         [full-end];
       padding-block: var(--space-8) var(--space-16);
     }
+    .page > .aside-right { display: none; }
     .site-nav { flex-wrap: wrap; row-gap: var(--space-2); }
     .site-nav ul { gap: var(--space-4); flex-wrap: wrap; }
   }

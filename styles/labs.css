@@ -1,10 +1,13 @@
 @layer pages {
   .labs.full {
     grid-column: full;
-    padding-inline: var(--gutter-left);
+    padding-inline: var(--gutter);
     display: grid;
     gap: var(--space-6);
+    justify-items: center;
   }
+
+  .labs.full > * { width: min(100%, 1100px); }
 
   .labs-header {
     max-width: var(--content-width);
