@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Labs &middot; Abhijit Ramesh</title>
+  <meta name="description" content="Live WebGPU compute benchmark — measures matmul throughput across tile sizes and workgroup configurations on your GPU.">
+  <link rel="icon" href="/public/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles/tokens.css">
+  <link rel="stylesheet" href="/styles/base.css">
+  <link rel="stylesheet" href="/styles/layout.css">
+  <link rel="stylesheet" href="/styles/components.css">
+  <link rel="stylesheet" href="/styles/labs.css">
+</head>
+<body>
+  <main class="page">
+    <nav class="site-nav" aria-label="Primary">
+      <a class="brand" href="/">abhijitramesh.me</a>
+      <ul>
+        <li><a href="/work/">Work</a></li>
+        <li><a href="/timeline/">Timeline</a></li>
+        <li><a href="/writing/">Writing</a></li>
+        <li><a href="/labs/" aria-current="page">Labs</a></li>
+        <li><a href="/colophon.html">Colophon</a></li>
+      </ul>
+    </nav>
+
+    <article class="labs full">
+      <header class="labs-header">
+        <p class="meta-line">Labs</p>
+        <h1>webgpu-bench &mdash; live.</h1>
+        <p class="lede">Live WebGPU compute benchmark &mdash; measures llama.cpp inference throughput in your browser on your GPU. Tracks 10 models across 194 quantization variants. Runs in Chrome and Safari with WebGPU enabled.</p>
+        <p class="meta-line"><a href="https://github.com/abhijitramesh/webgpu-bench" rel="noopener">Source on GitHub</a> &middot; <a href="https://abhijitramesh-webgpu-bench.static.hf.space" rel="noopener">Open in new tab</a></p>
+      </header>
+
+      <div class="labs-frame">
+        <iframe
+          src="https://abhijitramesh-webgpu-bench.static.hf.space"
+          title="webgpu-bench live dashboard"
+          loading="lazy"
+          referrerpolicy="no-referrer"
+          allow="clipboard-write">
+        </iframe>
+      </div>
+
+      <p class="caption">Embedded HuggingFace Space. Submit results from your browser via OAuth.</p>
+    </article>
+
+    <footer class="site-footer">
+      <span>&copy; Abhijit Ramesh</span>
+      <a href="/colophon.html">Colophon</a>
+    </footer>
+  </main>
+</body>
+</html>
