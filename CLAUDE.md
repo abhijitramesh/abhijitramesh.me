@@ -49,12 +49,6 @@ abhijitramesh.me/
     timeline.css
     labs.css
     colophon.css
-  js/
-    hero-webgpu.js
-    view-transitions.js
-    redirects.js
-  wgsl/
-    matmul-tile.wgsl
   fonts/
     InterVariable.woff2
     InterVariable-Italic.woff2
@@ -62,7 +56,6 @@ abhijitramesh.me/
   public/
     favicon.svg
     og-image.png
-    hero-fallback.png
   content/
     profile/bio.md
     profile/skills.md
@@ -98,13 +91,6 @@ paraphrasing in generated HTML. The `PARAPHRASE` table at the top of
 `scripts/build.mjs` is the source of truth — keep it updated. Run
 `grep` on `work/*.html` and `timeline/index.html` after every build to
 confirm no private nouns leaked. When unsure, anonymize more.
-
-## WebGPU hero
-
-`js/hero-webgpu.js` + `wgsl/matmul-tile.wgsl`. Real WGSL matmul on a
-320x120 canvas on the landing. Falls back to `public/hero-fallback.png`
-when WebGPU is unavailable. Performance budget: <50ms compile, <12KB
-combined JS+WGSL.
 
 ## Labs
 

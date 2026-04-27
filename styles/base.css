@@ -123,8 +123,7 @@
   }
 
   @media print {
-    .site-nav, .site-footer, #hero-details-host, .canvas-wrap, #hero-caption,
-    .labs-frame, .featured-list .badge {
+    .site-nav, .site-footer, .labs-frame, .featured-list .badge {
       display: none !important;
     }
     body { background: #fff; color: #000; font-size: 11pt; }
