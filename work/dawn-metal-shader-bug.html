@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dawn Metal shader bug · Abhijit Ramesh</title>
+  <meta name="description" content="Dawn Metal shader bug — open-source contributor / bug reporter">
+  <link rel="icon" href="/public/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles/tokens.css">
+  <link rel="stylesheet" href="/styles/base.css">
+  <link rel="stylesheet" href="/styles/layout.css">
+  <link rel="stylesheet" href="/styles/components.css">
+  <link rel="stylesheet" href="/styles/work.css">
+</head>
+<body>
+  <main class="page">
+<nav class="site-nav" aria-label="Primary">
+  <a class="brand" href="/">abhijitramesh.me</a>
+  <ul>
+    <li><a href="/work/">Work</a></li>
+    <li><a href="/timeline/">Timeline</a></li>
+    <li><a href="/writing/">Writing</a></li>
+    <li><a href="/labs/">Labs</a></li>
+    <li><a href="/colophon.html">Colophon</a></li>
+  </ul>
+</nav>
+  <article class="project-page">
+  <header>
+    <p class="meta-line"><a href="/work/">&larr; Work</a></p>
+    <h1>Dawn Metal shader bug</h1>
+    <p class="byline">2026-04 → present · open-source contributor / bug reporter</p>
+  </header>
+  <aside class="project-meta">
+  <dl><dt>Dates</dt><dd>2026-04 → present</dd></dl>
+  <dl><dt>Role</dt><dd>open-source contributor / bug reporter</dd></dl>
+  <dl><dt>Stack</dt><dd><code>C++</code> <code>WGSL</code> <code>WebGPU</code> <code>CMake</code> <code>Dawn</code></dd></dl>
+  <dl><dt>Tags</dt><dd><ul class="tag-row"><li>webgpu</li><li>shader-compilation</li><li>metal</li><li>dawn</li><li>bug-report</li><li>llama-cpp</li></ul></dd></dl>
+  <dl><dt>Source</dt><dd><a href="https://github.com/reeselevine/dawn-metal-issue" rel="noopener">reeselevine/dawn-metal-issue</a></dd></dl>
+</aside>
+  <div class="prose"><h3>Problem</h3>
+<p>A WebGPU shader executing on Apple Metal via Dawn produced incorrect output when reading from a storage buffer. The shader <code>mul_mat_reg_tile_q4_K_f32_exact.wgsl</code> extracts bytes from three fixed <code>u32</code> words inside a loop, expecting debug output <code>[0xdeadbeef, 1, 2, 3]</code> but observing zeros in indices 1–3. The failure was specific to Chrome on Apple Silicon; Safari passed. Only occurred with default Dawn settings (robustness enabled, integer division polyfills enabled).</p>
+<h3>Contribution</h3>
+<p>Created a public minimal-repro repository with two variants: a browser-based HTML demo and a native C++ runner using CMake, both isolating the shader bug and demonstrating the Metal/robustness interaction without external dependencies.</p>
+<h3>Technical details</h3>
+<p>The shader reads a constant buffer of three <code>u32</code> values and extracts individual bytes in a loop. Two Dawn compiler toggles independently masked the bug: <code>disable_robustness</code> (memory safety checks) and <code>disable_polyfills_on_integer_div_and_mod</code> (integer operation instrumentation). This pattern suggests either robustness-pass interaction or a polyfill-induced register pressure issue on Metal.</p>
+<h3>Outcome</h3>
+<p>Bug report repo serves as a shared test case for Dawn maintainers. The isolation—both cross-platform (browser vs. native) and cross-browser (Chrome vs. Safari)—narrows the problem to Dawn&#39;s Metal backend and compiler flags rather than driver or shader logic. Two forks indicate other developers encountered the same issue.</p></div>
+</article>
+  
+<footer class="site-footer">
+  <span>&copy; Abhijit Ramesh</span>
+  <a href="/colophon.html">Colophon</a>
+</footer>
+  </main>
+</body>
+</html>

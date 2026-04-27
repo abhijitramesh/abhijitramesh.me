@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>llama.cpp WebGPU backend · Abhijit Ramesh</title>
+  <meta name="description" content="llama.cpp WebGPU backend — Graduate Researcher">
+  <link rel="icon" href="/public/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles/tokens.css">
+  <link rel="stylesheet" href="/styles/base.css">
+  <link rel="stylesheet" href="/styles/layout.css">
+  <link rel="stylesheet" href="/styles/components.css">
+  <link rel="stylesheet" href="/styles/work.css">
+</head>
+<body>
+  <main class="page">
+<nav class="site-nav" aria-label="Primary">
+  <a class="brand" href="/">abhijitramesh.me</a>
+  <ul>
+    <li><a href="/work/">Work</a></li>
+    <li><a href="/timeline/">Timeline</a></li>
+    <li><a href="/writing/">Writing</a></li>
+    <li><a href="/labs/">Labs</a></li>
+    <li><a href="/colophon.html">Colophon</a></li>
+  </ul>
+</nav>
+  <article class="project-page">
+  <header>
+    <p class="meta-line"><a href="/work/">&larr; Work</a></p>
+    <h1>llama.cpp WebGPU backend</h1>
+    <p class="byline">2025-12 → present · Graduate Researcher</p>
+  </header>
+  <aside class="project-meta">
+  <dl><dt>Dates</dt><dd>2025-12 → present</dd></dl>
+  <dl><dt>Role</dt><dd>Graduate Researcher</dd></dl>
+  <dl><dt>Stack</dt><dd><code>C++</code> <code>WebGPU</code> <code>GGML</code> <code>WGSL</code></dd></dl>
+  <dl><dt>Tags</dt><dd><ul class="tag-row"><li>llm-inference</li><li>webgpu</li><li>gpu</li><li>systems</li><li>open-source</li><li>llama-cpp</li><li>ggml</li><li>browser-ml</li></ul></dd></dl>
+  <dl><dt>Source</dt><dd><a href="https://github.com/ggml-org/llama.cpp" rel="noopener">ggml-org/llama.cpp</a></dd></dl>
+</aside>
+  <div class="prose"><h3>Problem</h3>
+<p>Llama.cpp runs LLM inference across diverse hardware platforms using specialized compute backends (Metal, CUDA, Vulkan, etc.). WebGPU — a modern, platform-agnostic GPU abstraction — was missing from this ecosystem, limiting inference to browser and cross-platform edge environments where only CPU compute was practical.</p>
+<h3>Contribution</h3>
+<p>Implemented WebGPU backend support for llama.cpp, advancing from initial unary operators to a mature, production-ready backend covering binary operators, critical compute kernels, and optimized JIT compilation. Ported six unary operators (FLOOR, CEIL, ROUND, TRUNC, EXPM1, SOFTPLUS) in 2025, then expanded through 2026 to include JIT-compiled binary operators (with automatic overlap handling), mul_mat variants (reg_tile, subgroup_matrix, standard), copy, GLU, RoPE, and soft_max operations.</p>
+<h3>Technical details</h3>
+<p>WebGPU backend integrates with GGML&#39;s compute abstraction as a first-class backend (alongside Metal, CUDA, Vulkan). Core work focused on two architectural shifts:</p>
+<p><strong>2025:</strong> Fixed xielu parameter passing (merged to fork), added initial unary operator implementations.</p>
+<p><strong>2026 Q1:</strong> Migrated binary operators from ahead-of-time (AOT) template expansion to just-in-time (JIT) pre-WGSL compilation with automatic overlap detection (distinguishing in-place, source/destination overlap, and default bindings). Resolved WebGPU&#39;s 65,535 workgroup-per-dimension dispatch limit for large batch sizes by implementing 2D workgroup provisioning and bounds checking across mul_mat kernels. Ported all remaining AOT operators to JIT compilation by end of Q1, consolidating shader generation into compile-time preprocessing and eliminating Python template expansion.</p>
+<h3>Outcome</h3>
+<p>WebGPU backend is now a fully-supported, in-progress backend in llama.cpp. Matured from proof-of-concept (unary operators) to production-ready pipeline: JIT shader compilation, multi-kernel support (binary, mul_mat variants, critical elementwise operations), scalable batch handling, and binding correctness. This enables GPU-accelerated LLM inference on browsers, cross-platform devices, and edge hardware without native CUDA, HIP, or Metal support.</p></div>
+</article>
+  
+<footer class="site-footer">
+  <span>&copy; Abhijit Ramesh</span>
+  <a href="/colophon.html">Colophon</a>
+</footer>
+  </main>
+</body>
+</html>

@@ -5,3 +5,5 @@ node_modules/
 .idea/
 .playwright-mcp/
 phase[0-9]-*.png
+content/
+

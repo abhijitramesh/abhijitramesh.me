@@ -89,10 +89,15 @@ KB lives at `~/.lovelace/kb/` (private, never committed).
 
     node scripts/snapshot-kb.mjs && node scripts/build.mjs
 
-Build output IS committed. CI does not build. The site is the working tree.
+`content/` is gitignored — the snapshot includes private project text
+verbatim. Only the paraphrased HTML output is committed. CI does not
+build. The site is the working tree.
 
 Privacy: project cards with `visibility: private` get proper-noun
-paraphrasing in generated HTML. When unsure, anonymize more.
+paraphrasing in generated HTML. The `PARAPHRASE` table at the top of
+`scripts/build.mjs` is the source of truth — keep it updated. Run
+`grep` on `work/*.html` and `timeline/index.html` after every build to
+confirm no private nouns leaked. When unsure, anonymize more.
 
 ## WebGPU hero
 

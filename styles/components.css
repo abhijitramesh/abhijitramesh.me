@@ -73,6 +73,16 @@
     font-weight: 500;
   }
 
+  .project-card.featured h3 a {
+    color: var(--color-fg);
+  }
+
+  .project-card .pin {
+    color: var(--color-accent);
+    font-size: 0.85em;
+    margin-right: 0.25em;
+  }
+
   .project-card h3 a {
     color: var(--color-fg);
     text-decoration: none;
