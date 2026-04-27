@@ -6,7 +6,7 @@
     --color-bg-elevated: oklch(100% 0 0);
     --color-fg: oklch(20% 0.01 80);
     --color-fg-muted: oklch(45% 0.015 80);
-    --color-fg-subtle: oklch(60% 0.015 80);
+    --color-fg-subtle: oklch(48% 0.015 80);
     --color-border: oklch(88% 0.005 80);
     --color-border-subtle: oklch(93% 0.005 80);
     --color-accent: oklch(60% 0.14 220);
@@ -54,7 +54,7 @@
       --color-bg-elevated: oklch(19% 0.005 80);
       --color-fg: oklch(92% 0.01 80);
       --color-fg-muted: oklch(70% 0.015 80);
-      --color-fg-subtle: oklch(55% 0.015 80);
+      --color-fg-subtle: oklch(68% 0.015 80);
       --color-border: oklch(28% 0.005 80);
       --color-border-subtle: oklch(22% 0.005 80);
       --color-accent: oklch(72% 0.14 220);
