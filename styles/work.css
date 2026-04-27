@@ -57,13 +57,14 @@
 
   .chapter-rail {
     grid-row: 2 / -1;
+    align-self: start;
+    position: sticky;
+    top: var(--space-12);
     padding-left: var(--space-8);
     margin: 0;
   }
 
   .chapter-rail ol {
-    position: sticky;
-    top: var(--space-12);
     list-style: none;
     padding: 0;
     margin: 0;
