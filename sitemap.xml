@@ -2,18 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://abhijitramesh.me/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
   <url><loc>https://abhijitramesh.me/work/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://abhijitramesh.me/timeline/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://abhijitramesh.me/labs/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://abhijitramesh.me/labs/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://abhijitramesh.me/writing/</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://abhijitramesh.me/colophon.html</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
-  <url><loc>https://abhijitramesh.me/work/llama-cpp-webgpu-backend.html</loc><priority>0.8</priority></url>
-  <url><loc>https://abhijitramesh.me/work/webgpu-bench.html</loc><priority>0.8</priority></url>
-  <url><loc>https://abhijitramesh.me/work/dawn-metal-shader-bug.html</loc><priority>0.7</priority></url>
-  <url><loc>https://abhijitramesh.me/work/eusml-pancreas-segmentation.html</loc><priority>0.7</priority></url>
-  <url><loc>https://abhijitramesh.me/work/eusml-labeller.html</loc><priority>0.6</priority></url>
-  <url><loc>https://abhijitramesh.me/work/semler-qfhd-ensemble-framework.html</loc><priority>0.6</priority></url>
-  <url><loc>https://abhijitramesh.me/work/vr-heart-segmentation.html</loc><priority>0.6</priority></url>
-  <url><loc>https://abhijitramesh.me/work/gsoc-2020-mifos-mentor.html</loc><priority>0.5</priority></url>
-  <url><loc>https://abhijitramesh.me/work/gsoc-2019-mifos-mobile-cn.html</loc><priority>0.5</priority></url>
-  <url><loc>https://abhijitramesh.me/work/galileo-hackathon-gnss-2018.html</loc><priority>0.4</priority></url>
 </urlset>

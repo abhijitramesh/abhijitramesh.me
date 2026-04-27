@@ -1,6 +1,6 @@
 # abhijitramesh.me
 
-Hand-written static personal site. No framework. No bundler. No runtime npm.
+Hand-written static personal site. No framework. No bundler. No runtime npm. No KB pipeline. Every page is authored directly.
 
 ## Hard constraints (DO NOT VIOLATE)
 
@@ -12,6 +12,7 @@ Hand-written static personal site. No framework. No bundler. No runtime npm.
 - Per-page CSS files; cascade layers (`@layer reset, tokens, base, components, pages`).
 - No emoji in source.
 - No comments unless they explain a non-obvious why.
+- All asset paths are page-depth-relative so the site works under both the GH Pages project URL and a custom domain root.
 
 ## Design system
 
@@ -21,7 +22,6 @@ Color: OKLCH neutrals + one cyan accent (`--color-accent`).
 Type scale: 12, 14, 16, 18, 22, 28, 36, 64.
 Spacing scale: 4, 8, 12, 16, 24, 32, 48, 64, 96.
 Layout: 12-col CSS grid, asymmetric (generous left), 640px content column.
-Motion: View Transitions API + WebGPU hero only. Respect `prefers-reduced-motion`.
 
 ## File layout
 
@@ -29,16 +29,13 @@ Motion: View Transitions API + WebGPU hero only. Respect `prefers-reduced-motion
 abhijitramesh.me/
   CLAUDE.md
   README.md
-  .gitignore
-  CNAME                            # added later by user
-  index.html                       # landing
+  CNAME                            # binds GH Pages to abhijitramesh.me
+  index.html                       # landing — narrative arc
   colophon.html
-  404.html                         # client-side redirects for old routes
-  work/index.html                  # generated
-  work/<slug>.html                 # generated, one per project
-  timeline/index.html              # generated
-  writing/index.html               # static placeholder
-  labs/index.html                  # iframe page
+  404.html                         # inline redirect for old Next.js routes
+  work/index.html                  # four chapters: UCSC, ThetaTech, TexNano, OSS
+  writing/index.html               # placeholder
+  labs/index.html                  # iframe to webgpu-bench HF Space
   styles/
     tokens.css
     base.css
@@ -46,7 +43,6 @@ abhijitramesh.me/
     components.css
     landing.css
     work.css
-    timeline.css
     labs.css
     colophon.css
   fonts/
@@ -56,41 +52,23 @@ abhijitramesh.me/
   public/
     favicon.svg
     og-image.png
-  content/
-    profile/bio.md
-    profile/skills.md
-    projects/<slug>.md
-    timeline/<year>.md
-    artifacts/awards.md
-    artifacts/teaching.md
-    artifacts/community.md
-    roles/<slug>.md
-  scripts/
-    build.mjs
-    snapshot-kb.mjs
+  robots.txt
+  sitemap.xml
   .github/
     workflows/
       pages.yml
 ```
 
-## Content pipeline
+## Editing content
 
-KB lives at `~/.lovelace/kb/` (private, never committed).
-`scripts/snapshot-kb.mjs` copies a curated subset into `content/`.
-`scripts/build.mjs` reads `content/` markdown and emits `work/*.html`,
-`timeline/index.html`. Run manually after KB updates:
+All content is hand-authored — `index.html` for the arc, `work/index.html` for
+the four chapters. Update the prose directly. There is no build step. Do not
+read from `~/.lovelace/kb/` to populate the site; it was a one-time reference,
+not a runtime source.
 
-    node scripts/snapshot-kb.mjs && node scripts/build.mjs
-
-`content/` is gitignored — the snapshot includes private project text
-verbatim. Only the paraphrased HTML output is committed. CI does not
-build. The site is the working tree.
-
-Privacy: project cards with `visibility: private` get proper-noun
-paraphrasing in generated HTML. The `PARAPHRASE` table at the top of
-`scripts/build.mjs` is the source of truth — keep it updated. Run
-`grep` on `work/*.html` and `timeline/index.html` after every build to
-confirm no private nouns leaked. When unsure, anonymize more.
+If a fact about an employer or project changes, edit the relevant `<article
+class="org">` block in `work/index.html`. The four chapters (in display order)
+are UCSC CHPL, Theta Tech AI, TexNano, and the open-source thread.
 
 ## Labs
 
@@ -100,16 +78,18 @@ inline the bench tool. It lives on HF Spaces by design.
 
 ## Deploy
 
-GitHub Pages from `main` via `.github/workflows/pages.yml`.
-Custom domain `CNAME` added by the user when ready.
-Old route redirects in `404.html` (client-side; GH Pages limitation).
+GitHub Pages from `main` via `.github/workflows/pages.yml`. CI does not
+build — the working tree is the site. `CNAME` binds the deployment to
+`abhijitramesh.me`. Old Next.js route redirects (`/blog`, `/snippets`,
+`/about`, etc.) are inline in `404.html` and detect the deployment root
+from the URL prefix so they work under both the project URL and a
+custom-domain root.
 
 ## Conventions
 
-- HTML: semantic. `<article>`, `<section>`, `<nav>`, `<aside>`. No div soup.
+- HTML: semantic. `<article>`, `<section>`, `<nav>`, `<header>`. No div soup.
 - CSS: cascade layers. No utility classes. BEM-ish naming where needed.
-- JS: ES modules, no bundling. One module per concern. No classes
-  unless they pay rent.
+- JS: ES modules, no bundling. One module per concern.
 - Filenames: kebab-case.
 
 ## What NOT to add
@@ -119,9 +99,4 @@ Old route redirects in `404.html` (client-side; GH Pages limitation).
 - Any third-party React component library.
 - Markdown rendering at runtime.
 - Service worker, PWA manifest (unless explicitly requested).
-
-## Current state
-
-Phase 0 in progress. Scaffolding tokens, fonts, landing, colophon, 404,
-writing placeholder. Old site preserved on `archive/legacy-next` and
-sibling archive branches.
+- KB-driven build scripts. Content is hand-authored.

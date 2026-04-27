@@ -1,89 +1,64 @@
 @layer pages {
-  .project-list {
+  .org {
+    margin-block: var(--space-16);
+    border-top: 1px solid var(--color-border-subtle);
+    padding-top: var(--space-8);
+  }
+
+  .org:first-of-type {
+    margin-top: var(--space-12);
+  }
+
+  .org-head {
+    margin-bottom: var(--space-6);
+  }
+
+  .org-meta {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-fg-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: var(--space-2);
+  }
+
+  .org-head h2 {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: var(--leading-tight);
+  }
+
+  .org-sub {
+    margin-top: var(--space-3);
+    color: var(--color-fg-muted);
+    font-size: var(--text-md);
+    line-height: var(--leading-relaxed);
+    max-width: 60ch;
+  }
+
+  .highlights {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    gap: var(--space-3);
-    margin-top: var(--space-8);
+    gap: var(--space-4);
   }
 
-  .project-page header {
-    margin-bottom: var(--space-8);
-  }
-
-  .project-page h1 {
-    font-size: var(--text-2xl);
-    margin-block: var(--space-2);
-  }
-
-  .project-page .byline {
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
-    color: var(--color-fg-subtle);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  .project-meta {
-    display: grid;
-    grid-template-columns: max-content minmax(0, 1fr);
-    gap: var(--space-2) var(--space-6);
-    padding: var(--space-4) 0;
-    border-block: 1px solid var(--color-border-subtle);
-    margin-bottom: var(--space-8);
-  }
-
-  .project-meta dl {
-    display: contents;
-  }
-
-  .project-meta dt {
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
-    color: var(--color-fg-subtle);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    padding-top: 0.15em;
-  }
-
-  .project-meta dd {
-    margin: 0;
-    font-size: var(--text-sm);
-    line-height: var(--leading-snug);
-  }
-
-  .project-meta dd code {
-    font-size: 0.85em;
-  }
-
-  .prose h2 {
-    margin-top: var(--space-12);
-    margin-bottom: var(--space-3);
-    font-size: var(--text-md);
-    color: var(--color-fg);
-  }
-
-  .prose h3 {
-    margin-top: var(--space-8);
-    margin-bottom: var(--space-2);
-    font-size: var(--text-base);
-  }
-
-  .prose p {
-    margin-block: var(--space-3);
+  .highlights li {
+    line-height: var(--leading-relaxed);
+    padding-left: var(--space-4);
+    border-left: 2px solid var(--color-border-subtle);
     max-width: 64ch;
   }
 
-  .prose ul, .prose ol {
-    margin-block: var(--space-3);
-    padding-left: var(--space-4);
+  .highlights li:hover {
+    border-left-color: var(--color-accent);
   }
 
-  .prose li {
-    margin-block: var(--space-1);
-    line-height: var(--leading-relaxed);
-  }
-
-  .prose blockquote {
-    margin-block: var(--space-4);
+  .highlights strong {
+    color: var(--color-fg);
+    font-weight: 600;
   }
 }

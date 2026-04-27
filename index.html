@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Abhijit Ramesh</title>
-  <meta name="description" content="UCSC MS CS student, llama.cpp WebGPU contributor, ex healthcare-AI lead. Systems work and browser-side LLM inference.">
+  <meta name="description" content="UCSC MS CS, llama.cpp WebGPU contributor, ex healthcare-AI lead. Five years of medical AI before grad school; now writing GPU kernels so language models run in browsers.">
   <link rel="icon" href="public/favicon.svg" type="image/svg+xml">
   <meta property="og:title" content="Abhijit Ramesh">
-  <meta property="og:description" content="UCSC MS CS student, llama.cpp WebGPU contributor, ex healthcare-AI lead.">
+  <meta property="og:description" content="UCSC MS CS, llama.cpp WebGPU contributor, ex healthcare-AI lead.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://abhijitramesh.me/">
   <meta property="og:image" content="https://abhijitramesh.me/public/og-image.png">
@@ -25,7 +25,6 @@
       <a class="brand" href="./">abhijitramesh.me</a>
       <ul>
         <li><a href="work/">Work</a></li>
-        <li><a href="timeline/">Timeline</a></li>
         <li><a href="writing/">Writing</a></li>
         <li><a href="labs/">Labs</a></li>
         <li><a href="colophon.html">Colophon</a></li>
@@ -35,40 +34,23 @@
     <header class="landing-hero">
       <p class="meta-line">Santa Cruz, CA</p>
       <h1 class="name">Abhijit Ramesh</h1>
-      <p class="oneliner">UCSC MS CS student and former healthcare-AI lead turned systems engineer, contributing to llama.cpp&rsquo;s WebGPU backend to bring efficient LLM inference to the browser.</p>
-      <p class="oneliner-secondary">Live WebGPU demos &mdash; including a continuously-running matmul benchmark on whatever GPU you brought &mdash; live over in <a href="labs/">labs</a>.</p>
+      <p class="oneliner">UCSC MS CS. Contributing WebGPU shaders to <code>ggml-org/llama.cpp</code> so language models run in browsers without WebAssembly heroics.</p>
     </header>
 
-    <section class="landing-section" aria-labelledby="featured-heading">
-      <h2 id="featured-heading">Featured work</h2>
-      <ul class="featured-list">
-        <li>
-          <a href="work/llama-cpp-webgpu-backend.html">
-            <span class="title">llama.cpp WebGPU backend</span>
-            <span class="badge">systems / wgsl</span>
-            <span class="summary">Browser-side LLM inference. Shipping shaders that move tokens.</span>
-          </a>
-        </li>
-        <li>
-          <a href="work/webgpu-bench.html">
-            <span class="title">webgpu-bench</span>
-            <span class="badge">tooling</span>
-            <span class="summary">Matmul throughput across tile sizes and workgroup configs, on your GPU.</span>
-          </a>
-        </li>
-        <li>
-          <a href="work/eusml-pancreas-segmentation.html">
-            <span class="title">EUSML pancreas segmentation</span>
-            <span class="badge">healthcare AI</span>
-            <span class="summary">Real-time endoscopic ultrasound segmentation, deployed in clinical use.</span>
-          </a>
-        </li>
-      </ul>
+    <section class="landing-section">
+      <h2>The arc</h2>
+      <p>I spent five years leading ML at <strong>Theta Tech AI</strong> and <strong>TexNano</strong> &mdash; segmentation models for endoscopic ultrasound, training systems for an FDA-pathway cardiac diagnostic device, and the inference services clinicians used at the point of care. The work shipped. Models live in clinical use today.</p>
+      <p>In late 2025 I left to dig into the systems layer where the model actually runs. I joined Tyler Sorensen&rsquo;s Concurrency and Heterogeneous Programming Lab at UCSC, alongside PhD student Reese Levine, to write the WebGPU backend for llama.cpp. Three PRs merged in Q1 2026 across shader compilation, dispatch limits, and kernel migration. I built the cross-browser benchmark the contributor community uses to validate them.</p>
+      <p>On any given day: WGSL spec edge cases, kernel autotuning, and a coffee in Santa Cruz.</p>
     </section>
 
     <section class="landing-section">
-      <h2>Currently</h2>
-      <p class="lede">Reading WGSL spec edge cases at 2am. Long-form thinking lives in <a href="timeline/">the timeline</a>.</p>
+      <h2>Where to go next</h2>
+      <ul class="quick-links">
+        <li><a href="work/">Selected work</a> &mdash; the four chapters that got me here</li>
+        <li><a href="labs/">Labs</a> &mdash; live WebGPU benchmark on your GPU</li>
+        <li><a href="https://github.com/abhijitramesh" rel="noopener">GitHub</a> &middot; <a href="https://www.linkedin.com/in/abhijit-ramesh" rel="noopener">LinkedIn</a> &middot; <a href="mailto:arames12@ucsc.edu">arames12@ucsc.edu</a></li>
+      </ul>
     </section>
 
     <footer class="site-footer">
