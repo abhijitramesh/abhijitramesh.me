@@ -121,4 +121,15 @@
     background: var(--color-accent);
     color: var(--color-bg);
   }
+
+  @media print {
+    .site-nav, .site-footer, #hero-details-host, .canvas-wrap, #hero-caption,
+    .labs-frame, .featured-list .badge {
+      display: none !important;
+    }
+    body { background: #fff; color: #000; font-size: 11pt; }
+    a { color: #000; text-decoration: underline; }
+    .page { padding: 1rem; display: block; }
+    h1, h2, h3 { page-break-after: avoid; }
+  }
 }

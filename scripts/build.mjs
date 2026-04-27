@@ -224,6 +224,11 @@ function htmlPage({ title, description, css, body, active }) {
   <title>${ESC(title)}</title>
   <meta name="description" content="${ESC(description)}">
   <link rel="icon" href="../public/favicon.svg" type="image/svg+xml">
+  <meta property="og:title" content="${ESC(title)}">
+  <meta property="og:description" content="${ESC(description)}">
+  <meta property="og:image" content="https://abhijitramesh.me/public/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://abhijitramesh.me/public/og-image.png">
   <link rel="stylesheet" href="../styles/tokens.css">
   <link rel="stylesheet" href="../styles/base.css">
   <link rel="stylesheet" href="../styles/layout.css">
