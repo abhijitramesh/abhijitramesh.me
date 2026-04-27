@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}})()</script>
   <title>Labs &middot; Abhijit Ramesh</title>
-  <meta name="description" content="Live WebGPU compute benchmark — measures matmul throughput across tile sizes and workgroup configurations on your GPU.">
+  <meta name="description" content="Two live demos coming out of llama.cpp and the UCSC CHPL lab: webgpu-bench (cross-browser GPU benchmark) and wllama (in-browser LLM inference via WebAssembly). Both run on your machine.">
   <meta property="og:title" content="Labs &mdash; Abhijit Ramesh">
-  <meta property="og:description" content="Live WebGPU compute benchmark on your GPU.">
+  <meta property="og:description" content="Two live demos coming out of llama.cpp and the UCSC CHPL lab. Both run on your machine.">
   <meta property="og:image" content="https://abhijitramesh.me/public/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://abhijitramesh.me/public/og-image.png">
@@ -34,22 +34,45 @@
 
     <article class="labs full">
       <header class="labs-header">
-        <h1>webgpu-bench &mdash; live.</h1>
-        <p class="lede">Live WebGPU compute benchmark &mdash; measures llama.cpp inference throughput in your browser on your GPU. Tracks 10 models across 194 quantization variants. Runs in Chrome and Safari with WebGPU enabled.</p>
-        <p class="meta-line"><a href="https://github.com/abhijitramesh/webgpu-bench" rel="noopener">Source on GitHub</a> &middot; <a href="https://abhijitramesh-webgpu-bench.static.hf.space" rel="noopener">Open in new tab</a></p>
+        <p class="meta-line">Labs</p>
+        <h1>Live in the browser.</h1>
+        <p class="lede">Two demos of work coming out of <a href="https://github.com/ggml-org/llama.cpp" rel="noopener"><code>ggml-org/llama.cpp</code></a> and the UCSC CHPL lab. Both run on your machine &mdash; nothing leaves the browser.</p>
       </header>
 
-      <div class="labs-frame">
-        <iframe
-          src="https://abhijitramesh-webgpu-bench.static.hf.space"
-          title="webgpu-bench live dashboard"
-          loading="lazy"
-          referrerpolicy="no-referrer"
-          allow="clipboard-write">
-        </iframe>
-      </div>
+      <section class="labs-item">
+        <header class="labs-header">
+          <h2>webgpu-bench</h2>
+          <p class="lede">Cross-browser benchmark for the llama.cpp WebGPU backend. Measures inference throughput on your GPU. Tracks 10 models across 194 quantization variants. Runs in Chrome and Safari with WebGPU enabled.</p>
+          <p class="meta-line"><a href="https://github.com/abhijitramesh/webgpu-bench" rel="noopener">Source on GitHub</a> &middot; <a href="https://abhijitramesh-webgpu-bench.static.hf.space" rel="noopener">Open in new tab</a></p>
+        </header>
+        <div class="labs-frame">
+          <iframe
+            src="https://abhijitramesh-webgpu-bench.static.hf.space"
+            title="webgpu-bench live dashboard"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+            allow="clipboard-write">
+          </iframe>
+        </div>
+        <p class="caption">Embedded HuggingFace Space. Submit results from your browser via OAuth.</p>
+      </section>
 
-      <p class="caption">Embedded HuggingFace Space. Submit results from your browser via OAuth.</p>
+      <section class="labs-item">
+        <header class="labs-header">
+          <h2>wllama</h2>
+          <p class="lede">In-browser LLM inference via WebAssembly &mdash; original by <a href="https://github.com/ngxson" rel="noopener">@ngxson</a>. The UCSC CHPL fork is what <a href="https://reeselevine.github.io/" rel="noopener">Reese Levine</a> and I use to demo GGUF models running directly in the browser as we keep landing changes upstream in <code>ggml-org/llama.cpp</code>.</p>
+          <p class="meta-line"><a href="https://github.com/abhijitramesh/wllama" rel="noopener">Source on GitHub</a> &middot; <a href="https://abhijitramesh.github.io/wllama/" rel="noopener">Open in new tab</a></p>
+        </header>
+        <div class="labs-frame">
+          <iframe
+            src="https://abhijitramesh.github.io/wllama/"
+            title="wllama in-browser LLM inference"
+            loading="lazy"
+            referrerpolicy="no-referrer">
+          </iframe>
+        </div>
+        <p class="caption">Forked from <a href="https://github.com/ngxson/wllama" rel="noopener">ngxson/wllama</a>. Embedded mode runs single-threaded WASM &mdash; open in a new tab for multi-threaded performance.</p>
+      </section>
     </article>
 
     <footer class="site-footer">
