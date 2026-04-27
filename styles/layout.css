@@ -1,0 +1,89 @@
+@layer base {
+  .page {
+    flex: 1 1 auto;
+    display: grid;
+    grid-template-columns:
+      [full-start] var(--gutter-left)
+      [content-start] minmax(0, var(--content-width))
+      [content-end] minmax(var(--gutter), 1fr)
+      [full-end];
+    column-gap: var(--space-6);
+    row-gap: var(--space-12);
+    padding-block: var(--space-16) var(--space-24);
+  }
+
+  .page > * { grid-column: content; }
+  .page > .full { grid-column: full; }
+  .page > .gutter-left { grid-column: full-start / content-start; }
+
+  .site-nav {
+    grid-column: content;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-6);
+    font-size: var(--text-sm);
+    color: var(--color-fg-muted);
+    margin-bottom: var(--space-8);
+  }
+
+  .site-nav a {
+    color: var(--color-fg-muted);
+    text-decoration: none;
+  }
+
+  .site-nav a:hover, .site-nav a[aria-current="page"] {
+    color: var(--color-fg);
+  }
+
+  .site-nav .brand {
+    font-weight: 600;
+    color: var(--color-fg);
+    font-family: var(--font-mono);
+    letter-spacing: -0.02em;
+  }
+
+  .site-nav ul {
+    display: flex;
+    gap: var(--space-6);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .site-footer {
+    grid-column: content;
+    margin-top: var(--space-24);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-border-subtle);
+    font-size: var(--text-sm);
+    color: var(--color-fg-subtle);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  .site-footer a {
+    color: var(--color-fg-subtle);
+    text-decoration: none;
+  }
+
+  .site-footer a:hover { color: var(--color-fg); }
+
+  @container (max-width: 600px) {
+    .site-nav { flex-direction: column; gap: var(--space-2); }
+  }
+
+  @media (max-width: 720px) {
+    .page {
+      grid-template-columns:
+        [full-start] var(--gutter)
+        [content-start] minmax(0, 1fr)
+        [content-end] var(--gutter)
+        [full-end];
+      padding-block: var(--space-8) var(--space-16);
+    }
+    .site-nav ul { gap: var(--space-4); }
+  }
+}

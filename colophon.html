@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Colophon &middot; Abhijit Ramesh</title>
+  <meta name="description" content="How this site is built: hand-written HTML, CSS, and JavaScript. No framework, no bundler, no runtime npm.">
+  <link rel="icon" href="/public/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles/tokens.css">
+  <link rel="stylesheet" href="/styles/base.css">
+  <link rel="stylesheet" href="/styles/layout.css">
+  <link rel="stylesheet" href="/styles/components.css">
+  <link rel="stylesheet" href="/styles/colophon.css">
+</head>
+<body>
+  <main class="page">
+    <nav class="site-nav" aria-label="Primary">
+      <a class="brand" href="/">abhijitramesh.me</a>
+      <ul>
+        <li><a href="/work/">Work</a></li>
+        <li><a href="/timeline/">Timeline</a></li>
+        <li><a href="/writing/">Writing</a></li>
+        <li><a href="/labs/">Labs</a></li>
+        <li><a href="/colophon.html" aria-current="page">Colophon</a></li>
+      </ul>
+    </nav>
+
+    <article class="colophon">
+      <h1>Colophon</h1>
+      <p class="subtitle">Hand-written HTML, CSS, and JavaScript. No framework, no bundler, no runtime npm.</p>
+
+      <section>
+        <h2>The manifesto</h2>
+        <p>Modern personal sites do not require frameworks. This one is built as a deliberate counter-statement: a couple of HTML files, a few stylesheets, a small WebGPU compute kernel, and the browser doing what it has always been good at &mdash; rendering documents.</p>
+        <p>Every byte you receive was authored on purpose. There is no bundler running at request time, no hydration, no client-side router, no analytics, no third-party scripts. The site is the working tree.</p>
+      </section>
+
+      <section>
+        <h2>Stack</h2>
+        <dl class="stack-list">
+          <dt>HTML</dt><dd>hand-authored, semantic, one file per page</dd>
+          <dt>CSS</dt><dd>cascade layers, OKLCH colors, container queries, View Transitions</dd>
+          <dt>JS</dt><dd>ES modules, no bundling, one module per concern</dd>
+          <dt>WebGPU</dt><dd>real WGSL matmul on the landing canvas</dd>
+          <dt>Fonts</dt><dd>Inter Variable + JetBrains Mono Variable, self-hosted</dd>
+          <dt>Build</dt><dd>node script reads a curated knowledge-base snapshot, emits HTML</dd>
+          <dt>Hosting</dt><dd>GitHub Pages, deploys on push to main</dd>
+        </dl>
+      </section>
+
+      <section>
+        <h2>Built with agents, not frameworks</h2>
+        <p>The scaffold, the design tokens, the build pipeline, and most of the prose were drafted in collaboration with Claude Code. Decisions about visual direction, content selection, and what to throw away were mine. The agents do not replace the work; they make it possible to spend the whole budget on the parts that matter.</p>
+      </section>
+
+      <section>
+        <h2>What lives here</h2>
+        <p><a href="/work/">Work</a> is project cards, generated from a private knowledge base. <a href="/timeline/">Timeline</a> is an annual retrospective. <a href="/labs/">Labs</a> is a live WebGPU benchmark hosted on Hugging Face Spaces. <a href="/writing/">Writing</a> is a placeholder for now.</p>
+      </section>
+
+      <section>
+        <h2>Source</h2>
+        <p>The full source lives at <a href="https://github.com/abhijitramesh/abhijitramesh.me">github.com/abhijitramesh/abhijitramesh.me</a>. The previous Next.js incarnation is preserved on the <code>archive/legacy-next</code> branch.</p>
+      </section>
+    </article>
+
+    <footer class="site-footer">
+      <span>&copy; Abhijit Ramesh</span>
+      <a href="/">Home</a>
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,142 @@
+@layer components {
+  .meta-line {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-fg-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .featured-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .featured-list a {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--space-4);
+    align-items: baseline;
+    padding-block: var(--space-3);
+    border-bottom: 1px solid var(--color-border-subtle);
+    color: var(--color-fg);
+    text-decoration: none;
+    transition: border-color var(--duration-fast) var(--ease-out);
+  }
+
+  .featured-list a:hover {
+    border-bottom-color: var(--color-accent);
+  }
+
+  .featured-list .title {
+    font-weight: 500;
+    font-size: var(--text-md);
+  }
+
+  .featured-list .summary {
+    grid-column: 1 / -1;
+    color: var(--color-fg-muted);
+    font-size: var(--text-sm);
+    line-height: var(--leading-snug);
+  }
+
+  .featured-list .badge {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-fg-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+
+  .project-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-2);
+    padding-block: var(--space-4);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .project-card .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--space-4);
+  }
+
+  .project-card h3 {
+    font-size: var(--text-md);
+    font-weight: 500;
+  }
+
+  .project-card h3 a {
+    color: var(--color-fg);
+    text-decoration: none;
+  }
+
+  .project-card h3 a:hover { color: var(--color-accent); }
+
+  .project-card .summary {
+    color: var(--color-fg-muted);
+    font-size: var(--text-sm);
+    line-height: var(--leading-snug);
+  }
+
+  .project-card .meta {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-fg-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .metric-badge {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.25em;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-fg-muted);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    padding: 0.15em 0.6em;
+    white-space: nowrap;
+  }
+
+  .metric-badge strong {
+    color: var(--color-fg);
+    font-weight: 600;
+  }
+
+  .year-marker {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-fg-subtle);
+    letter-spacing: 0.08em;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .tag-row li {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-fg-muted);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 4px;
+    padding: 0.1em 0.5em;
+  }
+}

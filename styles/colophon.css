@@ -1,0 +1,37 @@
+@layer pages {
+  .colophon h1 {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-2);
+  }
+
+  .colophon .subtitle {
+    color: var(--color-fg-muted);
+    font-size: var(--text-md);
+    margin-bottom: var(--space-12);
+  }
+
+  .colophon section { margin-block: var(--space-8); }
+
+  .colophon section h2 {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-fg-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-3);
+  }
+
+  .colophon p { line-height: var(--leading-relaxed); margin-bottom: var(--space-3); }
+
+  .colophon .stack-list {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: var(--space-2) var(--space-6);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    margin: 0;
+  }
+
+  .colophon .stack-list dt { color: var(--color-fg-subtle); }
+  .colophon .stack-list dd { margin: 0; color: var(--color-fg); }
+}

@@ -1,0 +1,88 @@
+@layer pages {
+  .landing-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-6);
+    margin-block: var(--space-8) var(--space-12);
+  }
+
+  .landing-hero .name {
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .landing-hero .oneliner {
+    font-size: var(--text-md);
+    color: var(--color-fg-muted);
+    line-height: var(--leading-snug);
+    max-width: 56ch;
+  }
+
+  .landing-hero .canvas-wrap {
+    position: relative;
+    width: 320px;
+    max-width: 100%;
+    aspect-ratio: 320 / 120;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    background: var(--color-bg-elevated);
+    overflow: hidden;
+  }
+
+  .landing-hero canvas, .landing-hero img.fallback {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .landing-hero .caption {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-fg-subtle);
+    line-height: var(--leading-snug);
+  }
+
+  .landing-hero details {
+    margin-top: var(--space-2);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+  }
+
+  .landing-hero summary {
+    cursor: pointer;
+    color: var(--color-accent);
+    list-style: none;
+  }
+
+  .landing-hero summary::-webkit-details-marker { display: none; }
+
+  .landing-hero details[open] summary { color: var(--color-fg-muted); }
+
+  .landing-hero pre.shader {
+    margin-top: var(--space-2);
+    max-height: 320px;
+    overflow: auto;
+  }
+
+  .landing-section {
+    display: grid;
+    gap: var(--space-4);
+    margin-block: var(--space-12);
+  }
+
+  .landing-section h2 {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-fg-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .landing-section .lede {
+    font-size: var(--text-md);
+    line-height: var(--leading-relaxed);
+    max-width: 60ch;
+  }
+}

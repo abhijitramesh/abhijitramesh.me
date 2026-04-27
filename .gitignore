@@ -1,0 +1,7 @@
+.DS_Store
+node_modules/
+*.log
+.vscode/
+.idea/
+.playwright-mcp/
+phase[0-9]-*.png
