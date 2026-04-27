@@ -9,7 +9,32 @@
   <link rel="stylesheet" href="styles/base.css">
   <link rel="stylesheet" href="styles/layout.css">
   <link rel="stylesheet" href="styles/components.css">
-  <script src="js/redirects.js"></script>
+  <script>
+  (function () {
+    // Derive deployment root from this page's HTML location so redirects
+    // work both at the project URL (/abhijitramesh.me/) and at a custom
+    // domain root (/).
+    var here = document.querySelector('link[rel="icon"]');
+    var root = here ? new URL(".", here.href).pathname : "/";
+    if (!root.endsWith("/")) root += "/";
+    var legacy = [
+      [/(?:^|\/)blog(?:\/.*)?$/, ""],
+      [/(?:^|\/)snippets(?:\/.*)?$/, ""],
+      [/(?:^|\/)dashboard\/?$/, ""],
+      [/(?:^|\/)uses\/?$/, ""],
+      [/(?:^|\/)newsletter(?:\/.*)?$/, ""],
+      [/(?:^|\/)about\/?$/, "colophon.html"],
+      [/(?:^|\/)api(?:\/.*)?$/, ""],
+    ];
+    var path = location.pathname;
+    for (var i = 0; i < legacy.length; i++) {
+      if (legacy[i][0].test(path)) {
+        location.replace(root + legacy[i][1]);
+        return;
+      }
+    }
+  })();
+  </script>
 </head>
 <body>
   <main class="page">
