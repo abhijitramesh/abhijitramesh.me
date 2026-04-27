@@ -1,6 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#0a0a0a"/>
-  <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle"
-        font-family="ui-monospace, SFMono-Regular, monospace" font-weight="600"
-        font-size="16" fill="#5cb6ff">ar</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="#0a0a0a" rx="6"/><text x="50%" y="55%" fill="#5cb6ff" dominant-baseline="middle" font-family="ui-monospace, SFMono-Regular, monospace" font-size="16" font-weight="600" text-anchor="middle">ar</text></svg>
