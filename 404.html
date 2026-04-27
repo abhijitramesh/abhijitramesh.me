@@ -11,24 +11,24 @@
   <link rel="stylesheet" href="styles/components.css">
   <script>
   (function () {
-    // Derive deployment root from this page's HTML location so redirects
-    // work both at the project URL (/abhijitramesh.me/) and at a custom
-    // domain root (/).
-    var here = document.querySelector('link[rel="icon"]');
-    var root = here ? new URL(".", here.href).pathname : "/";
-    if (!root.endsWith("/")) root += "/";
-    var legacy = [
-      [/(?:^|\/)blog(?:\/.*)?$/, ""],
-      [/(?:^|\/)snippets(?:\/.*)?$/, ""],
-      [/(?:^|\/)dashboard\/?$/, ""],
-      [/(?:^|\/)uses\/?$/, ""],
-      [/(?:^|\/)newsletter(?:\/.*)?$/, ""],
-      [/(?:^|\/)about\/?$/, "colophon.html"],
-      [/(?:^|\/)api(?:\/.*)?$/, ""],
-    ];
+    // Derive deployment root by detecting the GH Pages project prefix.
+    // Works under abhijitramesh.github.io/abhijitramesh.me/ AND a future
+    // custom-domain root (/).
     var path = location.pathname;
+    var m = path.match(/^\/[^\/]+\.me\//);
+    var root = m ? m[0] : "/";
+    var rest = path.slice(root.length - 1);
+    var legacy = [
+      [/^\/blog(\/.*)?$/, ""],
+      [/^\/snippets(\/.*)?$/, ""],
+      [/^\/dashboard\/?$/, ""],
+      [/^\/uses\/?$/, ""],
+      [/^\/newsletter(\/.*)?$/, ""],
+      [/^\/about\/?$/, "colophon.html"],
+      [/^\/api(\/.*)?$/, ""],
+    ];
     for (var i = 0; i < legacy.length; i++) {
-      if (legacy[i][0].test(path)) {
+      if (legacy[i][0].test(rest)) {
         location.replace(root + legacy[i][1]);
         return;
       }
