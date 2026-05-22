@@ -3,7 +3,7 @@
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: var(--space-4);
-    margin-block: var(--space-8) var(--space-16);
+    margin-block: var(--space-8) var(--space-6);
   }
 
   .landing-hero .name {
@@ -82,7 +82,7 @@
   .landing-section {
     display: grid;
     gap: var(--space-4);
-    margin-block: var(--space-12);
+    margin-block: var(--space-6);
   }
 
   .landing-section h2 {
