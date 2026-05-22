@@ -21,15 +21,6 @@
     max-width: 56ch;
   }
 
-  .landing-hero .availability {
-    margin-top: var(--space-4);
-    font-size: var(--text-sm);
-    color: var(--color-fg);
-    border-left: 2px solid var(--color-accent);
-    padding-left: var(--space-3);
-    max-width: 56ch;
-  }
-
   .landing-hero code {
     background: none;
     border: 0;
